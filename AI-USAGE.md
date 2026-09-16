@@ -11,8 +11,11 @@ The original planning document used “hand-written” labels for several compon
 
 ## Defects introduced by AI assistance
 
-None observed yet. Defects will be added only when a real failing test exposes them, together with the test and fixing commit. Defects will not be invented to fill this section.
+1. Codex supplied an incorrect expected SHA-256 for the downloader fixture. `tests/corpus/test_download.py::test_download_records_404_and_checksums_success` failed with the actual digest and prevented the mistake from entering the PR. Fixed in [`e00061d`](https://github.com/Sevens-Dev/px4-reqcheck/commit/e00061d).
+2. Codex initially selected `pyarrow 21.0.0` and `pytest 8.4.2`, both affected by advisories current on 2026-09-16. The required `pip-audit` gate reported `PYSEC-2026-113` and `PYSEC-2026-1845`; the dependencies were upgraded to fixed releases and the audit reran clean. Fixed in [`e00061d`](https://github.com/Sevens-Dev/px4-reqcheck/commit/e00061d).
+
+These are the defects actually observed. No defects were intentionally introduced.
 
 ## Rejected suggestions
 
-None recorded yet. Only actual rejected suggestions will be documented.
+- Codex considered treating the Flight Review repository's BSD license as permission to redistribute public uploaded logs. That inference was rejected: the repository license covers source code, while no license grant for user-uploaded log contents was found. The project stores raw logs only in git-ignored local data and publishes identifiers, checksums, metadata, and derived outputs.
