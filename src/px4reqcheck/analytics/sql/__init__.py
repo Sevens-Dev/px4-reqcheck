@@ -1,0 +1,1 @@
+"""Committed SQL query resources."""

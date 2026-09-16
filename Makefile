@@ -1,4 +1,4 @@
-.PHONY: all corpus format ingest lint test typecheck
+.PHONY: all corpus figures format ingest lint test typecheck
 
 all: lint typecheck test
 
@@ -7,6 +7,9 @@ corpus:
 
 ingest:
 	uv run px4reqcheck ingest --manifest corpus/manifest.json --raw-dir data/raw --output data/parquet
+
+figures:
+	uv run px4reqcheck analyze --data-root data/parquet --output reports/figures
 
 format:
 	uv run ruff format .

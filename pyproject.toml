@@ -53,5 +53,5 @@ python_version = "3.12"
 strict = true
 
 [[tool.mypy.overrides]]
-module = ["px4reqcheck.corpus.*", "px4reqcheck.ingest.*"]
+module = ["px4reqcheck.analytics.*", "px4reqcheck.corpus.*", "px4reqcheck.ingest.*"]
 ignore_errors = true

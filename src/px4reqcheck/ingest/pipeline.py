@@ -71,6 +71,7 @@ def ingest_log(log_id: str, source: Path, output_root: Path) -> dict[str, Any]:
             additional_instances.setdefault(dataset.name, []).append(dataset.multi_id)
     topic_count = 0
     row_count = 0
+    inventory: list[dict[str, Any]] = []
     for dataset in ulog.data_list:
         if dataset.multi_id != 0:
             continue
@@ -80,6 +81,7 @@ def ingest_log(log_id: str, source: Path, output_root: Path) -> dict[str, Any]:
         present_topics.add(dataset.name)
         topic_count += 1
         row_count += len(frame)
+        inventory.append({"log_id": log_id, "topic": dataset.name, "row_count": len(frame)})
         timestamps = frame["timestamp"].to_numpy()
         checks = {
             "ts_nonmonotonic": count_nonmonotonic(timestamps),
@@ -128,6 +130,7 @@ def ingest_log(log_id: str, source: Path, output_root: Path) -> dict[str, Any]:
         quality.append({"log_id": log_id, "check": "topic_missing", "count": 1, "detail": topic})
     _parameter_rows(log_id, ulog).to_parquet(destination / "parameters.parquet", index=False)
     pd.DataFrame(quality).to_parquet(destination / "quality.parquet", index=False)
+    pd.DataFrame(inventory).to_parquet(destination / "topic_inventory.parquet", index=False)
     version = ulog.get_version_info()
     metadata = {
         "log_id": log_id,
@@ -141,6 +144,7 @@ def ingest_log(log_id: str, source: Path, output_root: Path) -> dict[str, Any]:
     (destination / "logmeta.json").write_text(
         json.dumps(metadata, indent=2) + "\n", encoding="utf-8"
     )
+    pd.DataFrame([metadata]).to_parquet(destination / "logmeta.parquet", index=False)
     return metadata
 
 
