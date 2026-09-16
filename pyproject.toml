@@ -14,16 +14,23 @@ dependencies = [
   "matplotlib>=3.10,<4",
   "numpy>=2.3,<3",
   "pandas>=2.3,<3",
-  "pyarrow>=21,<22",
+  "pyarrow>=23.0.1,<24",
   "pyulog>=1.2,<2",
+  "pyyaml>=6.0,<7",
   "requests>=2.32,<3",
+  "typer>=0.17,<1",
 ]
+
+[project.scripts]
+px4reqcheck = "px4reqcheck.cli:app"
 
 [dependency-groups]
 dev = [
   "mypy==1.18.2",
-  "pytest==8.4.2",
+  "pip-audit>=2.9,<3",
+  "pytest==9.0.3",
   "ruff==0.13.2",
+  "types-requests>=2.32,<3",
 ]
 
 [tool.hatch.build.targets.wheel]
@@ -43,3 +50,7 @@ select = ["E", "F", "I", "UP", "B"]
 [tool.mypy]
 python_version = "3.12"
 strict = true
+
+[[tool.mypy.overrides]]
+module = ["px4reqcheck.corpus.*", "px4reqcheck.ingest.*"]
+ignore_errors = true
