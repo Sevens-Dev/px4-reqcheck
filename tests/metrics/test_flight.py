@@ -73,6 +73,13 @@ def test_battery_value_uses_last_sample_before_disarm() -> None:
     assert result.window_end_us == 5
 
 
+def test_battery_value_uses_latest_timestamp_when_input_is_nonmonotonic() -> None:
+    result = battery_value_at_disarm([1, 4, 3], [12.0, 11.0, 11.5], [0, 5], [1, 0])
+
+    assert result.value == 11.0
+    assert result.window_start_us == 4
+
+
 def test_vibration_rms_matches_sine_rms() -> None:
     sample_rate = 400.0
     t = np.arange(0, 2, 1 / sample_rate)
@@ -88,3 +95,12 @@ def test_vibration_rejects_sample_rate_below_nyquist_margin() -> None:
     result = vibration_rms_z(np.ones(100), 199.9)
 
     assert result.reason == "insufficient_samples"
+
+
+def test_vibration_rejects_missing_samples_instead_of_compressing_time() -> None:
+    values = np.ones(100)
+    values[50] = np.nan
+
+    result = vibration_rms_z(values, 400)
+
+    assert result.reason == "quality_fail"

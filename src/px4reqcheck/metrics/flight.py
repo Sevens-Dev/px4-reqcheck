@@ -162,7 +162,7 @@ def battery_value_at_disarm(
     candidates = np.flatnonzero((value_timestamps <= edge) & np.isfinite(samples))
     if candidates.size == 0:
         return MetricResult(None, "insufficient_samples")
-    index = int(candidates[-1])
+    index = int(candidates[np.argmax(value_timestamps[candidates])])
     return MetricResult(
         float(samples[index]),
         window_start_us=int(value_timestamps[index]),
@@ -177,7 +177,8 @@ def vibration_rms_z(
     if sample_rate_hz < 200:
         return MetricResult(None, "insufficient_samples")
     values = _float_array(acceleration_z)
-    values = values[np.isfinite(values)]
+    if not np.all(np.isfinite(values)):
+        return MetricResult(None, "quality_fail")
     if values.size < 32:
         return MetricResult(None, "insufficient_samples")
     lowpass = butter(2, 5, btype="lowpass", fs=sample_rate_hz, output="sos")
