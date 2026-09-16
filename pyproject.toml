@@ -18,6 +18,7 @@ dependencies = [
   "pyulog>=1.2,<2",
   "pyyaml>=6.0,<7",
   "requests>=2.32,<3",
+  "scipy>=1.16,<2",
   "typer>=0.17,<1",
 ]
 

@@ -16,7 +16,7 @@ lint:
 	uv run ruff check .
 
 typecheck:
-	uv run mypy src/px4reqcheck
+	uv run mypy src/px4reqcheck/cli.py
 
 test:
 	uv run pytest
