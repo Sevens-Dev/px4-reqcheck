@@ -22,3 +22,18 @@ jobs:
       - run: uv run ruff check .
       - run: uv run mypy src/px4reqcheck
       - run: uv run pytest
+      - name: Audit Python dependencies
+        shell: bash
+        run: |
+          set -o pipefail
+          uv export --format requirements-txt --no-hashes | uv run pip-audit -r /dev/stdin
+
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

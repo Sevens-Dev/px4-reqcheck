@@ -1,0 +1,394 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-16T22:21:55.494015+00:00",
+  "source": "https://review.px4.io/dbinfo",
+  "download_endpoint": "https://review.px4.io/download",
+  "filters": {
+    "mav_types": [
+      "Hexarotor",
+      "Octorotor",
+      "Quadrotor"
+    ],
+    "mission_mode": 3,
+    "duration_s": [
+      60,
+      1200
+    ],
+    "firmware_minor": "1.15",
+    "latest_per_vehicle_preferred": true
+  },
+  "logs": [
+    {
+      "log_id": "ad0d295b-ebfc-4382-ad7c-e72ad43091b0",
+      "log_date": "2026-09-15",
+      "mav_type": "Quadrotor",
+      "flight_modes": [
+        2,
+        3,
+        5
+      ],
+      "duration_s": 99,
+      "ver_sw": "8c4e2cfc51077eb960c5e1fd8c56fdf7c3ecf701",
+      "ver_sw_release": "v1.15.7 0",
+      "vehicle_uuid": "000600000000393039303533510a00390038",
+      "airframe_name": "Generic Quadcopter",
+      "airframe_type": "Quadrotor x",
+      "source": "webui",
+      "sha256": "244ac9087178e0f5b179fc504a028f1c4fa3fb5696502b05819d10a15db5980a"
+    },
+    {
+      "log_id": "6032c737-ca04-4331-92a2-d666d9a39d51",
+      "log_date": "2026-09-15",
+      "mav_type": "Quadrotor",
+      "flight_modes": [
+        2,
+        3,
+        4,
+        14,
+        18
+      ],
+      "duration_s": 104,
+      "ver_sw": "af0334ece603f4cc8adc18ad1a5a6bac5da2b804",
+      "ver_sw_release": "v1.15.4 0",
+      "vehicle_uuid": "000200000000373735373233511200350036",
+      "airframe_name": "Generic Quadcopter",
+      "airframe_type": "Quadrotor x",
+      "source": "webui",
+      "sha256": "19c7c7c36ad688cf436c2bfa355f8ee3c6918a7535cd096baba2229d7eba96c2"
+    },
+    {
+      "log_id": "24835a82-9762-4118-84a3-71097ecc2a40",
+      "log_date": "2026-09-15",
+      "mav_type": "Quadrotor",
+      "flight_modes": [
+        1,
+        2,
+        3,
+        4,
+        14,
+        18
+      ],
+      "duration_s": 250,
+      "ver_sw": "437e5724f731e8e7e271f412813df7386cc1602c",
+      "ver_sw_release": "v1.15.4 0",
+      "vehicle_uuid": "000200000000373735373233511100260020",
+      "airframe_name": "Generic Quadcopter",
+      "airframe_type": "Quadrotor x",
+      "source": "webui",
+      "sha256": "06ab0c9ddd8c889d7b17980d88eb67252c99fd7786a1ac74e365a3be1791fd40"
+    },
+    {
+      "log_id": "f6591f05-7b14-4aad-9088-beec302362db",
+      "log_date": "2026-09-14",
+      "mav_type": "Quadrotor",
+      "flight_modes": [
+        2,
+        3
+      ],
+      "duration_s": 667,
+      "ver_sw": "99c40407ffd7ac184e2d7b4b293f36f10fe561ef",
+      "ver_sw_release": "v1.15.4 255",
+      "vehicle_uuid": "000600000000353037313033510c00490039",
+      "airframe_name": "Generic Quadcopter",
+      "airframe_type": "Quadrotor x",
+      "source": "webui",
+      "sha256": "ee970172bb38be649e9121c3f7fd2706688ad1f522a7c2c5576eecad64cc0a92"
+    },
+    {
+      "log_id": "d3ca6745-7f23-4030-a469-1f02eaaf2f8f",
+      "log_date": "2026-09-14",
+      "mav_type": "Quadrotor",
+      "flight_modes": [
+        2,
+        3,
+        4
+      ],
+      "duration_s": 184,
+      "ver_sw": "f6a53b89b720ebf19cc628626f6f615ef1a4c2e9",
+      "ver_sw_release": "v1.15.1 0",
+      "vehicle_uuid": "0006000000003639373235335118002a0022",
+      "airframe_name": "Generic Quadcopter",
+      "airframe_type": "Quadrotor x",
+      "source": "webui",
+      "sha256": "20d89ffaaea2fdaab379413ae98435536f8ba8c56e93a4408f47d7982ff4cbaa"
+    },
+    {
+      "log_id": "f51459ef-b790-4459-a92e-21eb512ddc9a",
+      "log_date": "2026-09-13",
+      "mav_type": "Quadrotor",
+      "flight_modes": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "duration_s": 651,
+      "ver_sw": "99c40407ffd7ac184e2d7b4b293f36f10fe561ef",
+      "ver_sw_release": "v1.15.4 0",
+      "vehicle_uuid": "0006000000003932383430335107004d0022",
+      "airframe_name": "Generic Quadcopter",
+      "airframe_type": "Quadrotor x",
+      "source": "webui",
+      "sha256": "ad159f42dc8ff57babfadfdfa9353ec3b72dfc6c6eb96212234c01cf91d7f92d"
+    },
+    {
+      "log_id": "0d728b7d-8d15-4975-b834-1c6b3174b062",
+      "log_date": "2026-09-13",
+      "mav_type": "Quadrotor",
+      "flight_modes": [
+        2,
+        3,
+        4,
+        12,
+        18
+      ],
+      "duration_s": 63,
+      "ver_sw": "7261fdf85cd91d9c8ed8d29a1427767f2a10272f",
+      "ver_sw_release": "v1.15.1 0",
+      "vehicle_uuid": "000600000000313138373333510700380028",
+      "airframe_name": "Generic Quadcopter",
+      "airframe_type": "Quadrotor x",
+      "source": "webui",
+      "sha256": "dce94a258542edabed61a1b993188867cda3d7af54f61dba52716afe33c8c9ef"
+    },
+    {
+      "log_id": "fa948c8e-93b2-4037-a9c0-e6bcbcfd72a1",
+      "log_date": "2026-09-11",
+      "mav_type": "Hexarotor",
+      "flight_modes": [
+        18,
+        3
+      ],
+      "duration_s": 73,
+      "ver_sw": "85df8c2281c2466b30a121b22b0bf33dc69bcfe4",
+      "ver_sw_release": "v1.15.4 0",
+      "vehicle_uuid": "000100000000373032303338510600250026",
+      "airframe_name": "Generic Hexarotor x geometry",
+      "airframe_type": "Hexarotor x",
+      "source": "webui",
+      "sha256": "35981955f5cabba6c1bfc7e29aa435ec35bd0871226a0507470791c842e63943"
+    },
+    {
+      "log_id": "c83c0194-e4e5-4959-a02d-9f3b70d7ece6",
+      "log_date": "2026-09-11",
+      "mav_type": "Hexarotor",
+      "flight_modes": [
+        2,
+        3,
+        4,
+        14,
+        17
+      ],
+      "duration_s": 368,
+      "ver_sw": "99c40407ffd7ac184e2d7b4b293f36f10fe561ef",
+      "ver_sw_release": "v1.15.4 255",
+      "vehicle_uuid": "000600000000373537383233510b004d0024",
+      "airframe_name": "Generic Hexarotor + geometry",
+      "airframe_type": "Hexarotor +",
+      "source": "webui",
+      "sha256": "d31c2d5576a90aedf9dcf2aa98297813cfc5bc3dd8500c1295263027d3b40c77"
+    },
+    {
+      "log_id": "a4e7c842-a5af-4469-8357-bb14b6aeec06",
+      "log_date": "2026-09-11",
+      "mav_type": "Quadrotor",
+      "flight_modes": [
+        18,
+        3,
+        4,
+        14
+      ],
+      "duration_s": 403,
+      "ver_sw": "cb5b3a7b25f32dcd965faa63adb5658fb2bfc956",
+      "ver_sw_release": "v1.15.4 0",
+      "vehicle_uuid": "0002000000003233353732335106003d0036",
+      "airframe_name": "Generic Quadcopter",
+      "airframe_type": "Quadrotor x",
+      "source": "webui",
+      "sha256": "8caba663ebb9300c572c1fcbbd86c228c7b96404032401318d38743d98469e69"
+    },
+    {
+      "log_id": "73513a42-ca33-4642-afef-ff592005b539",
+      "log_date": "2026-09-11",
+      "mav_type": "Quadrotor",
+      "flight_modes": [
+        2,
+        3,
+        23
+      ],
+      "duration_s": 830,
+      "ver_sw": "99c40407ffd7ac184e2d7b4b293f36f10fe561ef",
+      "ver_sw_release": "v1.15.4 0",
+      "vehicle_uuid": "000600000000313138373333510f00390025",
+      "airframe_name": "Generic Quadcopter",
+      "airframe_type": "Quadrotor x",
+      "source": "webui",
+      "sha256": "f384499609c6ab9d496f6ff1176e7115d5e269e7bb268330c23196dba4b9a1fb"
+    },
+    {
+      "log_id": "f4f3389d-f121-4d3b-8bd1-cd7d4b4e5088",
+      "log_date": "2026-09-10",
+      "mav_type": "Quadrotor",
+      "flight_modes": [
+        2,
+        3,
+        5
+      ],
+      "duration_s": 331,
+      "ver_sw": "ae5a0b997e32a72cc3566d3a3dfeba5a82218bb9",
+      "ver_sw_release": "v1.15.5 0",
+      "vehicle_uuid": "00060000000034303936323351010042003c",
+      "airframe_name": "",
+      "airframe_type": 4005,
+      "source": "webui",
+      "sha256": "274f928f6f8b5010e496147bc84a5639e088abb33340c9bc8e0b4a485990e126"
+    },
+    {
+      "log_id": "e5c521d2-d6bd-4e35-b6ad-b855bafd644b",
+      "log_date": "2026-09-09",
+      "mav_type": "Quadrotor",
+      "flight_modes": [
+        2,
+        3,
+        4
+      ],
+      "duration_s": 979,
+      "ver_sw": "99c40407ffd7ac184e2d7b4b293f36f10fe561ef",
+      "ver_sw_release": "v1.15.4 0",
+      "vehicle_uuid": "0006000000003935383634325110003d003f",
+      "airframe_name": "Generic Quadcopter",
+      "airframe_type": "Quadrotor x",
+      "source": "webui",
+      "sha256": "abf0877fc76db4dfc00bd52a62c8ed28d2ee2e22af9a7cb6d021d4d96cab2644"
+    },
+    {
+      "log_id": "c597ba1f-f0cd-4228-9820-b4d5d2e2b97a",
+      "log_date": "2026-09-09",
+      "mav_type": "Quadrotor",
+      "flight_modes": [
+        3,
+        4,
+        5
+      ],
+      "duration_s": 161,
+      "ver_sw": "99c40407ffd7ac184e2d7b4b293f36f10fe561ef",
+      "ver_sw_release": "v1.15.4 255",
+      "vehicle_uuid": "000600000000323339343434510600420030",
+      "airframe_name": "Generic Quadcopter",
+      "airframe_type": "Quadrotor x",
+      "source": "webui",
+      "sha256": "a1b12a0ec4f15ef202719601f1835777deb9912ecd115b16a2cc139172fb6a58"
+    },
+    {
+      "log_id": "e98b1b76-8cb1-4b94-985a-907e00bdbfed",
+      "log_date": "2026-09-04",
+      "mav_type": "Quadrotor",
+      "flight_modes": [
+        2,
+        3,
+        14
+      ],
+      "duration_s": 406,
+      "ver_sw": "abd858723c16f41922e395a986ee7b016457d184",
+      "ver_sw_release": "v1.15.4 0",
+      "vehicle_uuid": "000200000000303036373033511500380029",
+      "airframe_name": "Generic Quadcopter",
+      "airframe_type": "Quadrotor x",
+      "source": "webui",
+      "sha256": "2ab6d397c04e4cd3387889f233087abbd0e44a3a17e7ff981b15c672131e8cd8"
+    },
+    {
+      "log_id": "deea3db0-6ff9-4854-9008-2f13b73928b8",
+      "log_date": "2026-09-04",
+      "mav_type": "Quadrotor",
+      "flight_modes": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "duration_s": 256,
+      "ver_sw": "99c40407ffd7ac184e2d7b4b293f36f10fe561ef",
+      "ver_sw_release": "v1.15.4 255",
+      "vehicle_uuid": "",
+      "airframe_name": "Generic Quadcopter",
+      "airframe_type": "Quadrotor x",
+      "source": "webui",
+      "sha256": "4812e1cf6c30dc52d8733bfe94b89cd3cdd7b1f3c3ff531ccb33d09706eae280"
+    },
+    {
+      "log_id": "82bb47cb-dbd5-4755-9553-0990124e17ab",
+      "log_date": "2026-09-04",
+      "mav_type": "Quadrotor",
+      "flight_modes": [
+        2,
+        3,
+        4,
+        14
+      ],
+      "duration_s": 665,
+      "ver_sw": "26db778d11a02015820fca371821936405eafedf",
+      "ver_sw_release": "v1.15.4 0",
+      "vehicle_uuid": "0002000000003737353732335110003e002a",
+      "airframe_name": "Generic Quadcopter",
+      "airframe_type": "Quadrotor x",
+      "source": "webui",
+      "sha256": "a6c28fec2bff2d4a60b05bef16eb4432f23bfc5ebc5274f9e2e72967fe172b8e"
+    },
+    {
+      "log_id": "36d2e007-ddeb-40b1-ac63-16159708cca6",
+      "log_date": "2026-09-04",
+      "mav_type": "Quadrotor",
+      "flight_modes": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "duration_s": 893,
+      "ver_sw": "99c40407ffd7ac184e2d7b4b293f36f10fe561ef",
+      "ver_sw_release": "v1.15.4 255",
+      "vehicle_uuid": "",
+      "airframe_name": "Generic Quadcopter",
+      "airframe_type": "Quadrotor x",
+      "source": "webui",
+      "sha256": "33b9b2b4c9d209de7ef248c4c9438fa97e10e075f86574bbf7e6f18538d2ef1e"
+    },
+    {
+      "log_id": "fd395d03-12c2-488a-b307-20c3b1dbfe89",
+      "log_date": "2026-09-03",
+      "mav_type": "Quadrotor",
+      "flight_modes": [
+        2,
+        3,
+        4,
+        14
+      ],
+      "duration_s": 225,
+      "ver_sw": "ce525d95aff9dcf4030eb2181959a22674be2047",
+      "ver_sw_release": "v1.15.4 0",
+      "vehicle_uuid": "0002000000003130373632335108003f002d",
+      "airframe_name": "Generic Quadcopter",
+      "airframe_type": "Quadrotor x",
+      "source": "webui",
+      "sha256": "b42825dbcaf835fe1a7ccfcad18c2a2fafc5add3c270a4c9286e60a095944e56"
+    },
+    {
+      "log_id": "ec7a8856-04f9-4e58-8e03-bd16c3f7a27a",
+      "log_date": "2026-09-03",
+      "mav_type": "Quadrotor",
+      "flight_modes": [
+        3,
+        5
+      ],
+      "duration_s": 187,
+      "ver_sw": "4817c0618a1286846116e90c6eb8919efaa013cf",
+      "ver_sw_release": "v1.15.2 0",
+      "vehicle_uuid": "",
+      "airframe_name": "",
+      "airframe_type": 10016,
+      "source": "webui",
+      "sha256": "5ce750ed9f7eb8d46d805d3ea60f0f70a120bacc7d26fe883aeb2d7a94d26941"
+    }
+  ]
+}

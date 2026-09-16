@@ -1,6 +1,12 @@
-.PHONY: all format lint test typecheck
+.PHONY: all corpus format ingest lint test typecheck
 
 all: lint typecheck test
+
+corpus:
+	uv run px4reqcheck corpus download --manifest corpus/manifest.json --destination data/raw
+
+ingest:
+	uv run px4reqcheck ingest --manifest corpus/manifest.json --raw-dir data/raw --output data/parquet
 
 format:
 	uv run ruff format .
