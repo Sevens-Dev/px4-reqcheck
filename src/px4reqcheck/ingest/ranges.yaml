@@ -1,0 +1,10 @@
+vehicle_local_position.x: {min: -100000, max: 100000, unit: m}
+vehicle_local_position.y: {min: -100000, max: 100000, unit: m}
+vehicle_local_position.z: {min: -100000, max: 100000, unit: m}
+vehicle_local_position.vz: {min: -100, max: 100, unit: m/s}
+battery_status.remaining: {min: 0, max: 1, unit: fraction}
+battery_status.voltage_filtered_v: {min: 0, max: 100, unit: V}
+vehicle_gps_position.fix_type: {min: 0, max: 8, unit: enum}
+sensor_gps.fix_type: {min: 0, max: 8, unit: enum}
+vehicle_gps_position.eph: {min: 0, max: 10000, unit: m}
+sensor_gps.eph: {min: 0, max: 10000, unit: m}

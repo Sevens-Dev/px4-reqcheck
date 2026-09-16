@@ -13,6 +13,9 @@ The original planning document used “hand-written” labels for several compon
 
 1. Codex supplied an incorrect expected SHA-256 for the downloader fixture. `tests/corpus/test_download.py::test_download_records_404_and_checksums_success` failed with the actual digest and prevented the mistake from entering the PR. Fixed in [`e00061d`](https://github.com/Sevens-Dev/px4-reqcheck/commit/e00061d).
 2. Codex initially selected `pyarrow 21.0.0` and `pytest 8.4.2`, both affected by advisories current on 2026-09-16. The required `pip-audit` gate reported `PYSEC-2026-113` and `PYSEC-2026-1845`; the dependencies were upgraded to fixed releases and the audit reran clean. Fixed in [`e00061d`](https://github.com/Sevens-Dev/px4-reqcheck/commit/e00061d).
+3. Codex wrote the battery-at-disarm test with an incorrect hand-computed expectation: it selected the penultimate battery sample even though a later sample still preceded the disarm edge. `tests/metrics/test_flight.py::test_battery_value_uses_last_sample_before_disarm` failed (`11.0 != 11.5`) and the expected value/window were corrected in [`81ee48b`](https://github.com/Sevens-Dev/px4-reqcheck/commit/81ee48b).
+4. Automated Codex review found that battery-at-disarm used the last matching row rather than the maximum timestamp, which was wrong for reported-but-retained nonmonotonic input. `test_battery_value_uses_latest_timestamp_when_input_is_nonmonotonic` now guards the case. Fixed in [`efc7175`](https://github.com/Sevens-Dev/px4-reqcheck/commit/efc7175).
+5. Automated Codex review found that the vibration metric removed non-finite samples before its FFT, silently compressing time and invalidating the frequency bins. `test_vibration_rejects_missing_samples_instead_of_compressing_time` now requires `quality_fail`. Fixed in [`efc7175`](https://github.com/Sevens-Dev/px4-reqcheck/commit/efc7175).
 
 These are the defects actually observed. No defects were intentionally introduced.
 
