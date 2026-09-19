@@ -1,0 +1,72 @@
+name: C++ checker timing
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.8.22"
+          python-version: "3.12"
+          enable-cache: true
+      - run: uv sync --all-groups --locked
+      - name: Install pinned hyperfine
+        run: |
+          curl --fail --location --silent --show-error \
+            --output /tmp/hyperfine.deb \
+            https://github.com/sharkdp/hyperfine/releases/download/v1.19.0/hyperfine_1.19.0_amd64.deb
+          sudo dpkg --install /tmp/hyperfine.deb
+          test "$(hyperfine --version)" = "hyperfine 1.19.0"
+      - name: Build real-corpus exchange input
+        run: |
+          make corpus
+          make ingest
+          make report
+          make cpp-build
+          make export-checks
+      - name: Record environment
+        run: |
+          mkdir -p reports/benchmarks
+          {
+            echo "runner_image=ubuntu-24.04"
+            echo "runner_environment=GitHub Actions hosted runner"
+            echo "cpu=$(lscpu | sed -n 's/^Model name:[[:space:]]*//p')"
+            echo "logical_cpus=$(nproc)"
+            echo "ram_kib=$(awk '/MemTotal/ {print $2}' /proc/meminfo)"
+            uv --version
+            uv run python --version
+            cmake --version | head -n 1
+            g++ --version | head -n 1
+            hyperfine --version
+            git rev-parse HEAD
+          } > reports/benchmarks/cpp-timing-environment.txt
+      - name: Time identical read-checks-to-write-verdicts regions
+        run: >-
+          hyperfine --warmup 3 --runs 20
+          --export-json reports/benchmarks/cpp-timing.json
+          --command-name Python
+          'uv run px4reqcheck python-checks --checks export/checks.json --output /tmp/python_verdicts.json'
+          --command-name C++
+          'cpp/build/px4-reqcheck-cpp export/checks.json /tmp/cpp_verdicts.json'
+      - name: Verify both timed outputs
+        run: |
+          uv run px4reqcheck compare-cpp \
+            --python-verdicts docs/report/verdicts.json \
+            --cpp-verdicts /tmp/python_verdicts.json
+          uv run px4reqcheck compare-cpp \
+            --python-verdicts docs/report/verdicts.json \
+            --cpp-verdicts /tmp/cpp_verdicts.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cpp-checker-timing
+          path: reports/benchmarks/cpp-timing*
+          if-no-files-found: error
+          retention-days: 30

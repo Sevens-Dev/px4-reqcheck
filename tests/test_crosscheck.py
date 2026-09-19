@@ -9,6 +9,7 @@ from px4reqcheck.crosscheck import (
     SCHEMA_ROOT,
     _log_contract,
     assert_agreement,
+    run_python_checker,
     validate_contract,
 )
 from px4reqcheck.requirements import Verdict
@@ -88,3 +89,14 @@ def test_agreement_checks_status_reason_and_descent_tolerance(tmp_path: Path) ->
     cpp_path.write_text(json.dumps(cpp_rows), encoding="utf-8")
     with pytest.raises(AssertionError, match="descent metric mismatch"):
         assert_agreement(python_path, cpp_path)
+
+
+def test_python_checker_recomputes_descent_instead_of_reusing_scalar(tmp_path: Path) -> None:
+    fixture = Path(__file__).parents[1] / "cpp" / "tests" / "checks_fixture.json"
+    output = tmp_path / "verdicts.json"
+
+    verdicts = run_python_checker(fixture, output)
+
+    assert len(verdicts) == 2
+    assert verdicts[1]["metric_value"] == pytest.approx(5.6)
+    assert verdicts[1]["metric_value"] != 999.0
