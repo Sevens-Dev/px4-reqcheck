@@ -122,6 +122,7 @@ def _timed(call: Callable[[], Any]) -> tuple[float, Any]:
 
 def prepare_sqlite(data_root: Path, database: Path) -> None:
     """Materialize the three preregistered logical inputs into SQLite."""
+    database.parent.mkdir(parents=True, exist_ok=True)
     source = duckdb.connect()
     register_views(
         source,
@@ -130,8 +131,13 @@ def prepare_sqlite(data_root: Path, database: Path) -> None:
     )
     destination = sqlite3.connect(database)
     try:
-        for table in ("quality", "topic_inventory", "local_position"):
-            source.execute(f"SELECT * FROM {table}").fetchdf().to_sql(
+        projections = {
+            "quality": 'log_id, "check", "count"',
+            "topic_inventory": "log_id, row_count",
+            "local_position": 'log_id, "timestamp", z',
+        }
+        for table, columns in projections.items():
+            source.execute(f"SELECT {columns} FROM {table}").fetchdf().to_sql(
                 table,
                 destination,
                 if_exists="replace",
@@ -307,7 +313,7 @@ def render_benchmark_report(ingest_path: Path, sql_path: Path, output: Path) -> 
         "",
         f"- CPU: {hardware['cpu']}",
         f"- RAM: {hardware['ram']}",
-        f"- Platform: {hardware['platform']} (GitHub Actions runner)",
+        f"- Platform: Ubuntu 24.04 GitHub Actions hosted runner; `{hardware['platform']}`",
         f"- Logical CPUs: {hardware['logical_cpus']}",
         f"- Python: {versions['python']}",
         f"- DuckDB: {versions['duckdb']}",
@@ -328,7 +334,8 @@ def render_benchmark_report(ingest_path: Path, sql_path: Path, output: Path) -> 
         "",
         "```bash",
         "uv run px4reqcheck benchmark ingest --runs 10 \\",
-        "  --cold-cache-command 'sudo scripts/drop-caches.sh'",
+        "  --cold-cache-command 'sudo scripts/drop-caches.sh' \\",
+        "  --output benchmark-output/ingest.json",
         "```",
         "",
         "## DuckDB versus SQLite",
@@ -353,7 +360,8 @@ def render_benchmark_report(ingest_path: Path, sql_path: Path, output: Path) -> 
             "",
             "```bash",
             "uv run px4reqcheck benchmark sql --runs 10 \\",
-            "  --cold-cache-command 'sudo scripts/drop-caches.sh'",
+            "  --cold-cache-command 'sudo scripts/drop-caches.sh' \\",
+            "  --output benchmark-output/sql.json",
             "```",
             "",
             "Cold-cache procedure: before every timed repetition, the harness invokes "
