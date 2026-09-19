@@ -1,0 +1,11 @@
+runner_image=ubuntu-24.04
+runner_environment=GitHub Actions hosted runner
+cpu=AMD EPYC 7763 64-Core Processor
+logical_cpus=4
+ram_kib=16373452
+uv 0.8.22
+Python 3.12.3
+cmake version 3.31.6
+g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+hyperfine 1.19.0
+e5631d64383c4c01b1338edb3342f2932b930fce

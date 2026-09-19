@@ -15,6 +15,7 @@ The original planning document used “hand-written” labels for several compon
 - 2026-09-19: implemented real-corpus metric adaptation, traceability accounting, and the generated Jinja2/Plotly report.
 - 2026-09-19: implemented the C++17 checker scaffold, independent linear-percentile calculation, GoogleTest suite, and CI job.
 - 2026-09-19: implemented the versioned Python/C++ exchange schemas, real-corpus exporter, and cross-language agreement gate.
+- 2026-09-19: implemented the paired checker timing workflow and drafted the result table from its retained raw artifact.
 
 ## Defects introduced by AI assistance
 

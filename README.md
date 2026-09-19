@@ -8,10 +8,10 @@ One-command report generation after corpus setup: `make all`
 
 ## What this is not
 
-- It is not a reimplementation of PX4 Flight Review; Flight Review renders one log, while this project evaluates a pinned corpus against explicit requirements.
-- It does not analyze estimator internals, navigation performance, or controller design.
+- It is not a reimplementation of PX4 Flight Review and does not analyze estimator internals, navigation performance, or controller design.
 - It does not certify a vehicle or claim compliance with an aviation or PX4 standard.
 - It reports evidence for this pinned corpus; it does not generalize pass rates to all PX4 flights.
+- The C++ checker re-derives every verdict but independently recomputes only one raw-sample metric; 100% scalar-verdict agreement is otherwise by construction.
 
 ## Architecture
 
@@ -26,6 +26,8 @@ flowchart LR
     D --> F[Static figures and SQL results]
     R --> E[Three-valued evaluator]
     E --> T[Traceability matrix and report]
+    E --> X[Versioned checks.json exchange]
+    X --> C[Independent C++17 checker]
 ```
 
 Raw logs are downloaded from the public service for local processing and are never committed or redistributed. The committed manifest, checksums, aggregate benchmark outputs, and source-verification ADR make the implemented path inspectable.
@@ -67,6 +69,8 @@ gh run download RUN_ID --name real-corpus-report --dir reproduced-report
 
 The benchmark artifact records CPU, RAM, runner type, exact commands, tool versions, all repetitions, timed regions, and cold-cache procedure. The preregistered 5× DuckDB hypothesis did not hold: on this 20-log slice, indexed SQLite was faster on all three named queries. DuckDB remains the operational choice because it queries Parquet directly without a materialization step; this is not a universal speed claim.
 
+The Python/C++ checker boundary agreed on all 140 requirement/log verdicts. C++ independently reproduced every available pre-landing descent p95 within absolute `1e-6`. The checker-only [timing table](docs/benchmarks/cpp-timing.md) reports 20 runs per implementation and explicitly excludes ULog parsing; it is not a pipeline-speed claim.
+
 ## Current scope
 
 - Deterministic 20-log PX4 v1.15 corpus manifest with SHA-256 checksums and 404 tolerance.
@@ -76,5 +80,6 @@ The benchmark artifact records CPU, RAM, runner type, exact commands, tool versi
 - Seven machine-readable requirements with ordered aliases, sentinel-safe thresholds, exhaustive non-evaluable causes, and a committed 20-log traceability matrix.
 - Five committed analytical SQL queries and two static Matplotlib figures.
 - Preregistered DuckDB-versus-SQLite comparison with committed raw results and an explicit null result.
+- Versioned Python/C++ exchange schemas, an independent raw-sample C++ descent implementation, a 140-verdict agreement gate, and committed checker timing evidence.
 
-The next milestone adds the independent C++ verdict checker and raw-sample descent metric.
+The next milestone adds synthetic and real-corpus golden regression tiers plus a root-cause memo.
