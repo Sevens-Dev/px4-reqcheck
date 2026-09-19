@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "benchmark": "duckdb_vs_sqlite",
+  "runs": 10,
+  "statistic": "median of 10 cold-cache runs",
+  "cold_cache_command": "sudo scripts/drop-caches.sh",
+  "timed_region": "open connection, register DuckDB Parquet view where applicable, execute query, fetch all rows, close connection",
+  "hardware": {
+    "cpu": "AMD EPYC 7763 64-Core Processor",
+    "ram": "16373452 kB",
+    "logical_cpus": "4",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39"
+  },
+  "versions": {
+    "python": "3.12.3",
+    "duckdb": "1.5.5",
+    "pandas": "2.3.3",
+    "pyarrow": "23.0.1",
+    "sqlite": "3.45.1"
+  },
+  "run_identity": {
+    "git_commit": "4ef944c4923f7d3844c5d546109dc947e3bf75e8",
+    "github_run_id": "35446881914",
+    "github_repository": "Sevens-Dev/px4-reqcheck"
+  },
+  "queries": {
+    "full_scan_quality": {
+      "duckdb_seconds": [
+        0.020118925,
+        0.02244673,
+        0.02243063,
+        0.023389931,
+        0.023594102,
+        0.023321526,
+        0.023442051,
+        0.026832504,
+        0.023455276,
+        0.024627298
+      ],
+      "sqlite_seconds": [
+        0.002664404,
+        0.002535613,
+        0.002560129,
+        0.002343724,
+        0.00249096,
+        0.002714478,
+        0.00254988,
+        0.003456295,
+        0.002281979,
+        0.00240572
+      ],
+      "duckdb_median_seconds": 0.023415990999999997,
+      "sqlite_median_seconds": 0.0025427465,
+      "sqlite_over_duckdb": 0.10859017241678989
+    },
+    "per_log_topic_rows": {
+      "duckdb_seconds": [
+        0.020781455,
+        0.022346321,
+        0.021796532,
+        0.021285056,
+        0.021365506,
+        0.021245842,
+        0.022032614,
+        0.020978164,
+        0.021924122,
+        0.021743153
+      ],
+      "sqlite_seconds": [
+        0.001904393,
+        0.001851704,
+        0.001875108,
+        0.001650748,
+        0.001818041,
+        0.002021382,
+        0.001974243,
+        0.001983691,
+        0.001697486,
+        0.001799295
+      ],
+      "duckdb_median_seconds": 0.0215543295,
+      "sqlite_median_seconds": 0.001863406,
+      "sqlite_over_duckdb": 0.08645158737134458
+    },
+    "time_window_local_position": {
+      "duckdb_seconds": [
+        0.044816764,
+        0.046797459,
+        0.0476961,
+        0.04711334,
+        0.049161812,
+        0.047512617,
+        0.046892481,
+        0.051883393,
+        0.047490045,
+        0.047097541
+      ],
+      "sqlite_seconds": [
+        0.048114127,
+        0.042136912,
+        0.0452474,
+        0.0411846,
+        0.044252548,
+        0.041357393,
+        0.041939554,
+        0.042327037,
+        0.044227722,
+        0.043213966
+      ],
+      "duckdb_median_seconds": 0.0473016925,
+      "sqlite_median_seconds": 0.0427705015,
+      "sqlite_over_duckdb": 0.9042065778090288
+    }
+  },
+  "hypothesis_holds": false
+}
