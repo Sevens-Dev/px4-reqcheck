@@ -28,6 +28,17 @@ jobs:
           set -o pipefail
           uv export --format requirements-txt --no-hashes | uv run pip-audit -r /dev/stdin
 
+  cpp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure C++17 checker
+        run: cmake -S cpp -B cpp/build -DCMAKE_BUILD_TYPE=Release
+      - name: Build with warnings as errors
+        run: cmake --build cpp/build --parallel 2
+      - name: Run GoogleTest suite
+        run: ctest --test-dir cpp/build --output-on-failure
+
   secrets:
     runs-on: ubuntu-latest
     steps:
