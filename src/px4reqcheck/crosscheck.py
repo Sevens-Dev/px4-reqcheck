@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import math
+import operator
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
@@ -18,10 +19,12 @@ from px4reqcheck.analytics.evaluation import (
     evaluate_corpus,
 )
 from px4reqcheck.ingest.aliases import load_signal_aliases, resolve_signals
+from px4reqcheck.metrics import descent_rate_pre_land_p95
 from px4reqcheck.requirements import Verdict
 
 PARAMETER_CAUSES = {"param_missing", "param_disabled", "param_changed_in_flight"}
 SCHEMA_ROOT = Path(__file__).parents[2] / "export"
+COMPARATORS = {">=": operator.ge, "<=": operator.le, ">": operator.gt, "<": operator.lt}
 
 
 def export_checks(data_root: Path, output: Path) -> dict[str, Any]:
@@ -128,6 +131,58 @@ def _finite_or_none(value: object) -> float | None:
 def validate_contract(document: Any, schema_path: Path) -> None:
     schema = json.loads(schema_path.read_text(encoding="utf-8"))
     Draft202012Validator(schema).validate(document)
+
+
+def run_python_checker(checks_path: Path, output: Path) -> list[dict[str, Any]]:
+    """Read the exchange contract and write independently re-derived verdicts."""
+    document = json.loads(checks_path.read_text(encoding="utf-8"))
+    validate_contract(document, SCHEMA_ROOT / "checks.schema.json")
+    verdicts: list[dict[str, Any]] = []
+    for log in document["logs"]:
+        for threshold in log["thresholds"]:
+            metric_name = threshold["metric"]
+            value = log["metrics"][metric_name]
+            reason = threshold["reason"]
+            if reason is None and metric_name == "descent_rate_pre_land_p95":
+                value, reason = _python_descent(log["raw"])
+            elif reason is None and value is None:
+                reason = log["metric_reasons"][metric_name]
+            if reason is not None:
+                status = "not_evaluable"
+            else:
+                if value is None or threshold["value"] is None:
+                    raise ValueError("resolved check is missing a metric or threshold")
+                status = (
+                    "pass"
+                    if COMPARATORS[threshold["comparator"]](value, threshold["value"])
+                    else "fail"
+                )
+            verdicts.append(
+                {
+                    "log_id": log["log_id"],
+                    "req_id": threshold["req_id"],
+                    "status": status,
+                    "metric_value": value,
+                    "reason": reason,
+                }
+            )
+    validate_contract(verdicts, SCHEMA_ROOT / "cpp_verdicts.schema.json")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(verdicts, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+    return verdicts
+
+
+def _python_descent(raw: dict[str, Any]) -> tuple[float | None, str | None]:
+    if raw["reason"] is not None:
+        return None, str(raw["reason"])
+    result = descent_rate_pre_land_p95(
+        np.asarray(raw["timestamps_us"], dtype=np.int64),
+        np.asarray([np.nan if value is None else value for value in raw["descent_vz"]]),
+        np.asarray([np.nan if value is None else value for value in raw["z_m"]]),
+        land_edge_us=raw["land_edge_us"],
+        land_alt2_m=float(raw["land_alt2_m"]),
+    )
+    return result.value, result.reason
 
 
 def assert_agreement(python_verdicts: Path, cpp_verdicts: Path) -> int:

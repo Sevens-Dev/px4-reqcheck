@@ -10,3 +10,4 @@ reports/
 cpp/build/
 export/checks.json
 export/cpp_verdicts.json
+export/python_verdicts.json

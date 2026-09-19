@@ -18,7 +18,7 @@ from px4reqcheck.benchmark import (
 )
 from px4reqcheck.corpus.download import download_manifest
 from px4reqcheck.corpus.manifest import build_manifest
-from px4reqcheck.crosscheck import assert_agreement, export_checks
+from px4reqcheck.crosscheck import assert_agreement, export_checks, run_python_checker
 from px4reqcheck.ingest.pipeline import ingest_manifest
 
 app = typer.Typer(no_args_is_help=True)
@@ -52,6 +52,16 @@ def compare_cpp_command(
     """Fail unless Python and C++ verdicts agree under the contract."""
     count = assert_agreement(python_verdicts, cpp_verdicts)
     typer.echo(f"agreed on {count} requirement/log verdicts")
+
+
+@app.command("python-checks")
+def python_checks_command(
+    checks: Annotated[Path, typer.Option("--checks")] = Path("export/checks.json"),
+    output: Annotated[Path, typer.Option("--output")] = Path("export/python_verdicts.json"),
+) -> None:
+    """Run the Python side over the same exported exchange document."""
+    verdicts = run_python_checker(checks, output)
+    typer.echo(f"wrote {len(verdicts)} Python verdicts")
 
 
 @app.command("analyze")
