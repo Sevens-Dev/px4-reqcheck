@@ -33,6 +33,14 @@ The timed region begins immediately before opening an engine connection and ends
 
 The preregistered meaningful difference is the stated 5x ratio on every query. Smaller differences do not support the performance hypothesis.
 
+## Minimum detectable difference given N
+
+With 10 continuous-duration observations per engine and no inferential confidence-interval decision, there is no discrete measurement-resolution floor or power-based MDD. The operational detectable difference is therefore the preregistered decision threshold itself: a median SQLite/DuckDB duration ratio of at least 5.0 on each query, equivalent to a 4.0 absolute ratio increase above parity. Ratios below 5.0 do not support the hypothesis regardless of their size or consistency.
+
+## Amendment history
+
+- 2026-09-19: Added the explicit “minimum detectable difference given N” field required by the shared measurement contract. This omission was noticed only after workflow validation run `35446528067`; that run is not the publishable final result. The dataset, queries, run count, hypothesis, metric, decision rule, 5x threshold, null sentence, timed region, cache procedure, and engine order were not changed. A later workflow run from a commit containing this amendment is required for publication.
+
 ## Current execution status
 
 No publishable comparison has been run. The current implementation host is Ubuntu 26.04 rather than the required WSL2 Ubuntu 24.04 environment, so timing performed here would not satisfy the measurement contract.
