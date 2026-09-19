@@ -10,6 +10,7 @@ The original planning document used “hand-written” labels for several compon
 - 2026-09-16: assisted with the Week 0 source-verification research and ADR drafting.
 - 2026-09-16: implemented the Week 1 corpus, normalized ingest, quality checks, and tests.
 - 2026-09-16: implemented the Week 2 flight metrics, analytical SQL, and static reports.
+- 2026-09-19: implemented the preregistered benchmark harness and manual measurement workflow.
 
 ## Defects introduced by AI assistance
 
@@ -21,6 +22,7 @@ The original planning document used “hand-written” labels for several compon
 6. Codex initially plotted the sum of per-topic sample-rate values as though it were a count of data-quality findings. Visual inspection of the generated figure exposed the category error; the report now excludes sample-rate measurements from the findings chart and uses a symmetric logarithmic scale so rare and frequent findings remain visible. Fixed in [`974d8d7`](https://github.com/Sevens-Dev/px4-reqcheck/commit/974d8d7).
 7. Automated Codex review found that eager registration of every analytical view made unrelated static figures fail when an optional `vehicle_local_position` topic was absent from the entire corpus. Figure generation now registers only its required inputs, with a regression test for selective registration. Fixed in [`e8fe58e`](https://github.com/Sevens-Dev/px4-reqcheck/commit/e8fe58e).
 8. Automated Codex review found that the full-scan quality query counted zero-finding rows as affected logs. The distinct-log aggregation is now conditional on a positive finding count and is covered by a zero-count fixture. Fixed in [`e8fe58e`](https://github.com/Sevens-Dev/px4-reqcheck/commit/e8fe58e).
+9. Codex initially created a SQLite index on the reserved column name `check` without quoting it. `tests/test_benchmark.py::test_sql_benchmark_checks_equivalence_and_records_every_run` failed with `sqlite3.OperationalError`; the identifier is now quoted. Fixed in [`2ca2997`](https://github.com/Sevens-Dev/px4-reqcheck/commit/2ca2997).
 
 These are the defects actually observed. No defects were intentionally introduced.
 
