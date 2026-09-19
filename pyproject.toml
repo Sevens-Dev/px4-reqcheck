@@ -27,10 +27,12 @@ px4reqcheck = "px4reqcheck.cli:app"
 
 [dependency-groups]
 dev = [
+  "hypothesis>=6.140,<7",
   "mypy==1.18.2",
   "pip-audit>=2.9,<3",
   "pytest==9.0.3",
   "ruff==0.13.2",
+  "types-pyyaml>=6.0,<7",
   "types-requests>=2.32,<3",
 ]
 

@@ -1,0 +1,30 @@
+bat_low_thr:
+  unit: fraction
+  candidates:
+    - {name: BAT_LOW_THR, unit: fraction}
+bat_n_cells:
+  unit: cells
+  candidates:
+    - {name: BAT1_N_CELLS, unit: cells}
+    - {name: BAT_N_CELLS, unit: cells}
+bat_v_empty:
+  unit: V/cell
+  candidates:
+    - {name: BAT1_V_EMPTY, unit: V/cell}
+    - {name: BAT_V_EMPTY, unit: V/cell}
+GF_MAX_HOR_DIST:
+  unit: m
+  candidates:
+    - {name: GF_MAX_HOR_DIST, unit: m}
+MPC_LAND_SPEED:
+  unit: m/s
+  candidates:
+    - {name: MPC_LAND_SPEED, unit: m/s}
+MPC_LAND_ALT2:
+  unit: m
+  candidates:
+    - {name: MPC_LAND_ALT2, unit: m}
+COM_DISARM_LAND:
+  unit: s
+  candidates:
+    - {name: COM_DISARM_LAND, unit: s}

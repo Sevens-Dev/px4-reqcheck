@@ -1,0 +1,65 @@
+- id: REQ-BATT-002-REMAIN
+  title: Battery remaining fraction at disarm stays at or above the operator's configured low threshold
+  metric: battery_remaining_at_disarm
+  unit: fraction
+  threshold: {expr: bat_low_thr}
+  comparator: ">="
+  requires_params: [bat_low_thr]
+  requires_signals: [battery_remaining, landed]
+
+- id: REQ-BATT-003-VOLT
+  title: Battery voltage at disarm stays above the pack's configured empty-cell voltage floor
+  metric: battery_voltage_at_disarm
+  unit: V
+  threshold: {expr: "bat_n_cells * bat_v_empty"}
+  disabled_when: "bat_n_cells == 0"
+  comparator: ">="
+  requires_params: [bat_n_cells, bat_v_empty]
+  requires_signals: [battery_voltage, landed]
+
+- id: REQ-GEOFENCE-001
+  title: Maximum horizontal distance from home stays within the configured geofence radius
+  metric: max_distance_from_home
+  unit: m
+  threshold: {expr: GF_MAX_HOR_DIST}
+  disabled_when: "GF_MAX_HOR_DIST == 0"
+  comparator: "<="
+  requires_params: [GF_MAX_HOR_DIST]
+  requires_signals: [local_position, home_position]
+
+- id: REQ-LAND-001
+  title: Pre-landing descent rate (95th percentile) stays within the configured land speed
+  metric: descent_rate_pre_land_p95
+  unit: m/s
+  threshold: {expr: MPC_LAND_SPEED}
+  comparator: "<="
+  requires_params: [MPC_LAND_SPEED, MPC_LAND_ALT2]
+  requires_signals: [local_position_vz, land_detected]
+
+- id: REQ-GPS-001
+  title: GPS fix quality does not drop below the minimum acceptable fix type during the mission segment
+  metric: gps_min_fix_type
+  unit: fix_type
+  threshold: {expr: "3"}
+  comparator: ">="
+  requires_params: []
+  requires_signals: [gps]
+
+- id: REQ-CRUISE-001
+  title: Altitude-hold RMS error during mission cruise stays within a bounded envelope
+  metric: altitude_error_rms_cruise
+  unit: m
+  threshold: {expr: "1.5"}
+  comparator: "<="
+  requires_params: []
+  requires_signals: [local_position, trajectory_setpoint, nav_state]
+
+- id: REQ-VIB-001
+  title: Z-axis vibration RMS stays within public PX4 advisory guidance
+  class: advisory
+  metric: vibration_rms_z
+  unit: m/s^2
+  threshold: {expr: "0.3"}
+  comparator: "<="
+  requires_params: []
+  requires_signals: [sensor_combined_or_imu_status]
