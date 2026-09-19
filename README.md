@@ -81,5 +81,6 @@ The Python/C++ checker boundary agreed on all 140 requirement/log verdicts. C++ 
 - Five committed analytical SQL queries and two static Matplotlib figures.
 - Preregistered DuckDB-versus-SQLite comparison with committed raw results and an explicit null result.
 - Versioned Python/C++ exchange schemas, an independent raw-sample C++ descent implementation, a 140-verdict agreement gate, and committed checker timing evidence.
+- Three committed synthetic Parquet fixtures form the tier-1 golden gate; CI fails if any of their 21 exact verdicts or tolerance-bounded metrics changes.
 
 The next milestone adds synthetic and real-corpus golden regression tiers plus a root-cause memo.
