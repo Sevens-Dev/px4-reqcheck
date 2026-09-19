@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import ast
 import math
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
@@ -117,7 +118,81 @@ def resolve_threshold(
         values
     ):
         return ThresholdResult(None, requirement.unit, "param_disabled", tuple(sources))
+    source_units = {source.logical_name: source.unit for source in sources}
+    threshold_dimension = _expression_dimension(
+        requirement.threshold.tree.body,
+        source_units,
+        default_unit=requirement.unit,
+        expression_has_names=bool(requirement.threshold.names),
+    )
+    if threshold_dimension != _unit_dimension(requirement.unit):
+        raise ValueError(
+            f"threshold unit mismatch for {requirement.id}: expression does not produce "
+            f"{requirement.unit}"
+        )
     value = requirement.threshold.evaluate_number(values)
     if not math.isfinite(value):
         raise ValueError(f"threshold is not finite for {requirement.id}")
     return ThresholdResult(value, requirement.unit, None, tuple(sources))
+
+
+def _expression_dimension(
+    node: ast.AST,
+    units: Mapping[str, str],
+    *,
+    default_unit: str,
+    expression_has_names: bool,
+) -> dict[str, int]:
+    if not expression_has_names:
+        return _unit_dimension(default_unit)
+    if isinstance(node, ast.Name):
+        return _unit_dimension(units[node.id])
+    if isinstance(node, ast.Constant):
+        return {}
+    if isinstance(node, ast.UnaryOp):
+        return _expression_dimension(
+            node.operand,
+            units,
+            default_unit=default_unit,
+            expression_has_names=True,
+        )
+    if isinstance(node, ast.BinOp):
+        left = _expression_dimension(
+            node.left,
+            units,
+            default_unit=default_unit,
+            expression_has_names=True,
+        )
+        right = _expression_dimension(
+            node.right,
+            units,
+            default_unit=default_unit,
+            expression_has_names=True,
+        )
+        if isinstance(node.op, (ast.Add, ast.Sub)):
+            if left != right:
+                raise ValueError("addition and subtraction require matching units")
+            return left
+        multiplier = 1 if isinstance(node.op, ast.Mult) else -1
+        result = dict(left)
+        for base, exponent in right.items():
+            result[base] = result.get(base, 0) + multiplier * exponent
+            if result[base] == 0:
+                del result[base]
+        return result
+    raise ValueError(f"cannot derive units for {type(node).__name__}")
+
+
+def _unit_dimension(unit: str) -> dict[str, int]:
+    known = {
+        "fraction": {"fraction": 1},
+        "cells": {"cell": 1},
+        "V": {"V": 1},
+        "V/cell": {"V": 1, "cell": -1},
+        "m": {"m": 1},
+        "s": {"s": 1},
+        "m/s": {"m": 1, "s": -1},
+        "m/s^2": {"m": 1, "s": -2},
+        "fix_type": {"fix_type": 1},
+    }
+    return known.get(unit, {unit: 1})

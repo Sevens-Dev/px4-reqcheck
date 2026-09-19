@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PX4 requirement traceability</title>
+    <style>
+      body { font: 16px/1.5 system-ui, sans-serif; margin: 2rem auto; max-width: 78rem; padding: 0 1rem; color: #17212b; }
+      table { border-collapse: collapse; width: 100%; font-size: .85rem; }
+      th, td { border: 1px solid #cbd5df; padding: .45rem; text-align: right; }
+      th:first-child, td:first-child { text-align: left; }
+      th { background: #16324f; color: white; position: sticky; top: 0; }
+      .table-wrap { overflow-x: auto; }
+      .warning { border-left: .4rem solid #b45309; background: #fff7ed; padding: 1rem; }
+    </style>
+  </head>
+  <body>
+    <h1>PX4 requirement traceability</h1>
+    <p>This report evaluates configured limits over the checksum-pinned public corpus. It is not a vehicle certification or controller-performance analysis.</p>
+    <p><strong>Corpus provenance:</strong> 20 public PX4 Flight Review log identifiers from <code>corpus/manifest.json</code> (SHA-256 <code>1f56c868fedf154822fd27da0420492814a20512bf066896f3dafe949ba66184</code>). Raw ULogs are not redistributed.</p>
+    <div class="warning"><strong>Coverage is a result:</strong> 110 of 140 requirement/log pairs were evaluable. Non-evaluable causes are retained below rather than dropped.</div>
+    <h2>Traceability matrix</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>requirement_id</th><th>total</th><th>evaluable</th><th>pass</th><th>fail</th><th>not_evaluable</th><th>param_missing</th><th>param_disabled</th><th>param_changed_in_flight</th><th>signal_missing</th><th>window_missing</th><th>insufficient_samples</th><th>quality_fail</th></tr></thead>
+      <tbody><tr><td>REQ-BATT-002-REMAIN</td><td>20</td><td>20</td><td>19</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>REQ-BATT-003-VOLT</td><td>20</td><td>20</td><td>19</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>REQ-CRUISE-001</td><td>20</td><td>18</td><td>17</td><td>1</td><td>2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>0</td></tr><tr><td>REQ-GEOFENCE-001</td><td>20</td><td>0</td><td>0</td><td>0</td><td>20</td><td>0</td><td>20</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>REQ-GPS-001</td><td>20</td><td>20</td><td>20</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>REQ-LAND-001</td><td>20</td><td>19</td><td>11</td><td>8</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><td>REQ-VIB-001</td><td>20</td><td>13</td><td>3</td><td>10</td><td>7</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>7</td><td>0</td></tr></tbody>
+    </table>
+    </div>
+    <p><a href="traceability.html">Open the interactive per-log drill-down</a> · <a href="verdicts.json">Raw verdicts</a> · <a href="resolved-signals.csv">Resolved signal aliases</a></p>
+    <h2>Corpus figures</h2>
+    <img src="assets/quality-findings.png" alt="Reported data-quality findings" style="max-width:100%">
+    <img src="assets/duration-by-firmware.png" alt="Mean log duration by firmware" style="max-width:100%">
+    <h2>Method and limitations</h2>
+    <p>Thresholds resolve from each log's initial parameters through ordered aliases. Disabled sentinel values and parameters changed in flight produce explicit non-evaluable verdicts. Public logs may omit required topics, and the corpus is not representative of all PX4 vehicles or operations.</p>
+  </body>
+</html>

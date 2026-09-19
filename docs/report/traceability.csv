@@ -1,0 +1,8 @@
+requirement_id,total,evaluable,pass,fail,not_evaluable,param_missing,param_disabled,param_changed_in_flight,signal_missing,window_missing,insufficient_samples,quality_fail
+REQ-BATT-002-REMAIN,20,20,19,1,0,0,0,0,0,0,0,0
+REQ-BATT-003-VOLT,20,20,19,1,0,0,0,0,0,0,0,0
+REQ-CRUISE-001,20,18,17,1,2,0,0,0,0,2,0,0
+REQ-GEOFENCE-001,20,0,0,0,20,0,20,0,0,0,0,0
+REQ-GPS-001,20,20,20,0,0,0,0,0,0,0,0,0
+REQ-LAND-001,20,19,11,8,1,0,0,0,0,0,1,0
+REQ-VIB-001,20,13,3,10,7,0,0,0,0,0,7,0
