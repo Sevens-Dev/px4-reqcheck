@@ -1,4 +1,4 @@
-.PHONY: all corpus figures format ingest lint test typecheck
+.PHONY: all bench corpus figures format ingest lint test typecheck
 
 all: lint typecheck test
 
@@ -10,6 +10,12 @@ ingest:
 
 figures:
 	uv run px4reqcheck analyze --data-root data/parquet --output reports/figures
+
+bench:
+	uv run px4reqcheck benchmark ingest --runs 10 --cold-cache-command 'sudo scripts/drop-caches.sh'
+	$(MAKE) ingest
+	uv run px4reqcheck benchmark sql --runs 10 --cold-cache-command 'sudo scripts/drop-caches.sh'
+	uv run px4reqcheck benchmark report
 
 format:
 	uv run ruff format .

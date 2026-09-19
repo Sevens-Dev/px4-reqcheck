@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import multiprocessing
 from importlib import resources
 from pathlib import Path
 from typing import Any
@@ -150,10 +151,14 @@ def ingest_log(log_id: str, source: Path, output_root: Path) -> dict[str, Any]:
 
 def ingest_manifest(manifest_path: Path, raw_dir: Path, output_root: Path) -> list[dict[str, Any]]:
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    results = []
+    tasks = []
     for entry in manifest["logs"]:
         source = raw_dir / f"{entry['log_id']}.ulg"
         if not source.exists():
             continue
-        results.append(ingest_log(entry["log_id"], source, output_root))
-    return results
+        tasks.append((entry["log_id"], source, output_root))
+    if not tasks:
+        return []
+    process_count = max(1, (multiprocessing.cpu_count() or 1) // 2)
+    with multiprocessing.Pool(processes=process_count, maxtasksperchild=1) as pool:
+        return pool.starmap(ingest_log, tasks)
