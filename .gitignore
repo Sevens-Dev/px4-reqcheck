@@ -8,3 +8,5 @@ __pycache__/
 data/
 reports/
 cpp/build/
+export/checks.json
+export/cpp_verdicts.json

@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "logs": [
+    {
+      "log_id": "synthetic",
+      "metrics": {"battery": 0.5, "descent_rate_pre_land_p95": 999.0},
+      "metric_reasons": {"battery": null, "descent_rate_pre_land_p95": null},
+      "thresholds": [
+        {"req_id": "REQ-BATT", "metric": "battery", "comparator": ">=", "value": 0.4, "reason": null},
+        {"req_id": "REQ-LAND", "metric": "descent_rate_pre_land_p95", "comparator": "<=", "value": 6.0, "reason": null}
+      ],
+      "raw": {
+        "timestamps_us": [0, 1000000, 2000000, 3000000, 4000000, 5000000, 6000000],
+        "descent_vz": [100.0, 1.0, 2.0, 3.0, 4.0, 50.0, 6.0],
+        "z_m": [-1.0, -1.0, -1.0, -1.0, -1.0, -6.0, -1.0],
+        "land_edge_us": 6000000,
+        "land_edge_index": 6,
+        "land_alt2_m": 5.0,
+        "reason": null
+      }
+    }
+  ]
+}

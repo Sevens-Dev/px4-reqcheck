@@ -37,4 +37,12 @@ if(BUILD_TESTING)
   target_compile_options(descent_test PRIVATE -Wall -Wextra -Werror)
   include(GoogleTest)
   gtest_discover_tests(descent_test)
+  add_test(
+    NAME checker_fixture
+    COMMAND ${CMAKE_COMMAND}
+      -DCHECKER=$<TARGET_FILE:px4-reqcheck-cpp>
+      -DINPUT=${CMAKE_CURRENT_SOURCE_DIR}/tests/checks_fixture.json
+      -DOUTPUT=${CMAKE_CURRENT_BINARY_DIR}/fixture_verdicts.json
+      -P ${CMAKE_CURRENT_SOURCE_DIR}/tests/checker_fixture.cmake
+  )
 endif()

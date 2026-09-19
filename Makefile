@@ -1,6 +1,6 @@
-.PHONY: all bench check corpus figures format ingest lint report test typecheck
+.PHONY: all bench check corpus cpp-agreement cpp-build cpp-check cpp-configure export-checks figures format ingest lint report test typecheck
 
-all: check report
+all: check cpp-check report cpp-agreement
 
 check: lint typecheck test
 
@@ -15,6 +15,22 @@ figures:
 
 report:
 	uv run px4reqcheck requirements evaluate --data-root data/parquet --output docs/report
+
+cpp-configure:
+	cmake -S cpp -B cpp/build -DCMAKE_BUILD_TYPE=Release
+
+cpp-build: cpp-configure
+	cmake --build cpp/build --parallel 2
+
+cpp-check: cpp-build
+	ctest --test-dir cpp/build --output-on-failure
+
+export-checks:
+	uv run px4reqcheck export-checks --data-root data/parquet --output export/checks.json
+
+cpp-agreement: export-checks cpp-build
+	cpp/build/px4-reqcheck-cpp export/checks.json export/cpp_verdicts.json
+	uv run px4reqcheck compare-cpp --python-verdicts docs/report/verdicts.json --cpp-verdicts export/cpp_verdicts.json
 
 bench:
 	uv run px4reqcheck benchmark ingest --runs 10 --cold-cache-command 'sudo scripts/drop-caches.sh'

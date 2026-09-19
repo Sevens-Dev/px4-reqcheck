@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Sevens-Dev/px4-reqcheck/export/checks.schema.json",
+  "title": "PX4 requirement checks exchange contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "logs"],
+  "properties": {
+    "version": {"const": 1},
+    "logs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["log_id", "metrics", "metric_reasons", "thresholds", "raw"],
+        "properties": {
+          "log_id": {"type": "string", "minLength": 1},
+          "metrics": {
+            "type": "object",
+            "additionalProperties": {"type": ["number", "null"]}
+          },
+          "metric_reasons": {
+            "type": "object",
+            "additionalProperties": {"type": ["string", "null"]}
+          },
+          "thresholds": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["req_id", "metric", "comparator", "value", "reason"],
+              "properties": {
+                "req_id": {"type": "string", "minLength": 1},
+                "metric": {"type": "string", "minLength": 1},
+                "comparator": {"enum": [">=", "<=", ">", "<"]},
+                "value": {"type": ["number", "null"]},
+                "reason": {"type": ["string", "null"]}
+              }
+            }
+          },
+          "raw": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["timestamps_us", "descent_vz", "z_m", "land_edge_us", "land_edge_index", "land_alt2_m", "reason"],
+            "properties": {
+              "timestamps_us": {"type": "array", "items": {"type": "integer"}},
+              "descent_vz": {"type": "array", "items": {"type": ["number", "null"]}},
+              "z_m": {"type": "array", "items": {"type": ["number", "null"]}},
+              "land_edge_us": {"type": ["integer", "null"]},
+              "land_edge_index": {"type": ["integer", "null"], "minimum": 0},
+              "land_alt2_m": {"type": ["number", "null"]},
+              "reason": {"type": ["string", "null"]}
+            }
+          }
+        }
+      }
+    }
+  }
+}
