@@ -8,6 +8,7 @@ from typing import Annotated
 
 import typer
 
+from px4reqcheck.analytics.report import generate_static_figures
 from px4reqcheck.corpus.download import download_manifest
 from px4reqcheck.corpus.manifest import build_manifest
 from px4reqcheck.ingest.pipeline import ingest_manifest
@@ -15,6 +16,16 @@ from px4reqcheck.ingest.pipeline import ingest_manifest
 app = typer.Typer(no_args_is_help=True)
 corpus_app = typer.Typer(no_args_is_help=True)
 app.add_typer(corpus_app, name="corpus")
+
+
+@app.command("analyze")
+def analyze(
+    data_root: Annotated[Path, typer.Option("--data-root")] = Path("data/parquet"),
+    output: Annotated[Path, typer.Option("--output")] = Path("reports/figures"),
+) -> None:
+    """Run committed analytical queries and emit static figures."""
+    generated = generate_static_figures(data_root, output)
+    typer.echo(f"generated {len(generated)} figures")
 
 
 @corpus_app.command("build")

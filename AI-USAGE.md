@@ -8,6 +8,8 @@ The original planning document used “hand-written” labels for several compon
 
 - 2026-09-16: generated the initial package and CI scaffold.
 - 2026-09-16: assisted with the Week 0 source-verification research and ADR drafting.
+- 2026-09-16: implemented the Week 1 corpus, normalized ingest, quality checks, and tests.
+- 2026-09-16: implemented the Week 2 flight metrics, analytical SQL, and static reports.
 
 ## Defects introduced by AI assistance
 
@@ -16,6 +18,9 @@ The original planning document used “hand-written” labels for several compon
 3. Codex wrote the battery-at-disarm test with an incorrect hand-computed expectation: it selected the penultimate battery sample even though a later sample still preceded the disarm edge. `tests/metrics/test_flight.py::test_battery_value_uses_last_sample_before_disarm` failed (`11.0 != 11.5`) and the expected value/window were corrected in [`81ee48b`](https://github.com/Sevens-Dev/px4-reqcheck/commit/81ee48b).
 4. Automated Codex review found that battery-at-disarm used the last matching row rather than the maximum timestamp, which was wrong for reported-but-retained nonmonotonic input. `test_battery_value_uses_latest_timestamp_when_input_is_nonmonotonic` now guards the case. Fixed in [`efc7175`](https://github.com/Sevens-Dev/px4-reqcheck/commit/efc7175).
 5. Automated Codex review found that the vibration metric removed non-finite samples before its FFT, silently compressing time and invalidating the frequency bins. `test_vibration_rejects_missing_samples_instead_of_compressing_time` now requires `quality_fail`. Fixed in [`efc7175`](https://github.com/Sevens-Dev/px4-reqcheck/commit/efc7175).
+6. Codex initially plotted the sum of per-topic sample-rate values as though it were a count of data-quality findings. Visual inspection of the generated figure exposed the category error; the report now excludes sample-rate measurements from the findings chart and uses a symmetric logarithmic scale so rare and frequent findings remain visible. Fixed in [`974d8d7`](https://github.com/Sevens-Dev/px4-reqcheck/commit/974d8d7).
+7. Automated Codex review found that eager registration of every analytical view made unrelated static figures fail when an optional `vehicle_local_position` topic was absent from the entire corpus. Figure generation now registers only its required inputs, with a regression test for selective registration. Fixed in [`e8fe58e`](https://github.com/Sevens-Dev/px4-reqcheck/commit/e8fe58e).
+8. Automated Codex review found that the full-scan quality query counted zero-finding rows as affected logs. The distinct-log aggregation is now conditional on a positive finding count and is covered by a zero-count fixture. Fixed in [`e8fe58e`](https://github.com/Sevens-Dev/px4-reqcheck/commit/e8fe58e).
 
 These are the defects actually observed. No defects were intentionally introduced.
 
