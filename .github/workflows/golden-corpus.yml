@@ -1,0 +1,38 @@
+name: Real-corpus golden regression
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  golden:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.8.22"
+          python-version: "3.12"
+          enable-cache: true
+      - run: uv sync --all-groups --locked
+      - name: Download and normalize the checksum-pinned corpus
+        run: |
+          make corpus
+          make ingest
+      - name: Run the full end-to-end gate
+        run: make all
+      - name: Run tier-2 golden regression
+        run: >-
+          uv run pytest golden/corpus/test_corpus_golden.py
+          --junitxml reports/golden-corpus-junit.xml
+      - uses: actions/upload-artifact@v4
+        with:
+          name: golden-corpus-evidence
+          path: |
+            reports/golden-corpus-junit.xml
+            export/cpp_verdicts.json
+          if-no-files-found: error
+          retention-days: 30
