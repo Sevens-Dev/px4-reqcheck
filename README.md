@@ -11,7 +11,7 @@ One-command report generation after corpus setup: `make all`
 - It is not a reimplementation of PX4 Flight Review; Flight Review renders one log, while this project evaluates a pinned corpus against explicit requirements.
 - It does not analyze estimator internals, navigation performance, or controller design.
 - It does not certify a vehicle or claim compliance with an aviation or PX4 standard.
-- Current metrics and figures are an implementation milestone, not yet the final requirement-evaluation report.
+- It reports evidence for this pinned corpus; it does not generalize pass rates to all PX4 flights.
 
 ## Architecture
 
@@ -24,7 +24,8 @@ flowchart LR
     Q --> D[DuckDB analytical views]
     Q --> R[Requirement metrics]
     D --> F[Static figures and SQL results]
-    R --> E[Three-valued evaluator — Week 3]
+    R --> E[Three-valued evaluator]
+    E --> T[Traceability matrix and report]
 ```
 
 Raw logs are downloaded from the public service for local processing and are never committed or redistributed. The committed manifest, checksums, aggregate benchmark outputs, and source-verification ADR make the implemented path inspectable.
@@ -46,13 +47,23 @@ make ingest
 make all
 ```
 
-The published timing was reproduced on a clean Ubuntu 24.04 GitHub Actions hosted runner, not on the development host. Trigger the committed workflow and download its raw artifact:
+The published timing was reproduced on a clean Ubuntu 24.04 GitHub Actions hosted runner, not on the development host. Trigger the committed benchmark workflow and download its raw artifact:
 
 ```bash
 gh workflow run benchmark.yml --ref main
 gh run list --workflow benchmark.yml --limit 1
 gh run download RUN_ID --name week2-benchmarks --dir benchmark-output
 ```
+
+The committed requirement report is independently regenerated from the real corpus and compared byte-for-byte in a second manual workflow:
+
+```bash
+gh workflow run real-corpus.yml --ref main
+gh run list --workflow real-corpus.yml --limit 1
+gh run download RUN_ID --name real-corpus-report --dir reproduced-report
+```
+
+[Hosted reproduction run 35448528237](https://github.com/Sevens-Dev/px4-reqcheck/actions/runs/35448528237) passed the full `make all` gate and exact report comparison on commit `0bf2d5e`.
 
 The benchmark artifact records CPU, RAM, runner type, exact commands, tool versions, all repetitions, timed regions, and cold-cache procedure. The preregistered 5× DuckDB hypothesis did not hold: on this 20-log slice, indexed SQLite was faster on all three named queries. DuckDB remains the operational choice because it queries Parquet directly without a materialization step; this is not a universal speed claim.
 
