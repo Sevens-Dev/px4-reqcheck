@@ -13,6 +13,7 @@ The original planning document used “hand-written” labels for several compon
 - 2026-09-19: implemented the preregistered benchmark harness and manual measurement workflow.
 - 2026-09-19: implemented the Week 3 requirement schema, safe expression parser, parameter aliases, threshold resolver, verdict model, and tests.
 - 2026-09-19: implemented real-corpus metric adaptation, traceability accounting, and the generated Jinja2/Plotly report.
+- 2026-09-19: implemented the C++17 checker scaffold, independent linear-percentile calculation, GoogleTest suite, and CI job.
 
 ## Defects introduced by AI assistance
 
@@ -27,6 +28,7 @@ The original planning document used “hand-written” labels for several compon
 9. Codex initially created a SQLite index on the reserved column name `check` without quoting it. `tests/test_benchmark.py::test_sql_benchmark_checks_equivalence_and_records_every_run` failed with `sqlite3.OperationalError`; the identifier is now quoted. Fixed in [`2ca2997`](https://github.com/Sevens-Dev/px4-reqcheck/commit/2ca2997).
 10. Codex's initial benchmark preregistration omitted the shared contract's explicit minimum-detectable-difference-given-N field. A post-run contract audit caught the omission, the first workflow artifact was rejected for publication, and the field plus amendment history were committed before a fresh run. `tests/test_benchmark_results.py::test_committed_results_recompute_and_preregistration_is_complete` now guards every required preregistration heading. Fixed in [`d1e10dc`](https://github.com/Sevens-Dev/px4-reqcheck/commit/d1e10dc).
 11. Codex initially hard-coded only the known production units in dimensional threshold checks, causing Hypothesis's generic total-verdict property to fail on a valid project-specific atomic unit label. Unknown atomic labels now form their own dimensions, so matching custom units work while mismatches remain rejected. Fixed in [`b47e435`](https://github.com/Sevens-Dev/px4-reqcheck/commit/b47e435).
+12. Codex initially gave the C++ altitude-window test an incorrect hand-computed p95 expectation of 5.5. `DescentRate.AppliesTimeAndAltitudeWindows` produced the correct NumPy-linear result of 5.6 and failed before the branch was pushed; the fixture expectation was corrected in [`0ce730e`](https://github.com/Sevens-Dev/px4-reqcheck/commit/0ce730e).
 
 These are the defects actually observed. No defects were intentionally introduced.
 
