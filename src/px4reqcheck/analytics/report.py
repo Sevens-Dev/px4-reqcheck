@@ -21,7 +21,7 @@ def generate_static_figures(data_root: Path, output: Path) -> list[Path]:
     output.mkdir(parents=True, exist_ok=True)
     connection = duckdb.connect()
     try:
-        register_views(connection, data_root)
+        register_views(connection, data_root, views=("quality", "logmeta"))
         quality = run_query(connection, "full_scan_quality")
         firmware = run_query(connection, "firmware_duration")
     finally:

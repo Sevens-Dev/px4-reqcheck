@@ -16,6 +16,14 @@ QUERY_NAMES = (
     "firmware_duration",
 )
 
+VIEW_PATHS = {
+    "quality": "quality.parquet",
+    "parameters": "parameters.parquet",
+    "logmeta": "logmeta.parquet",
+    "topic_inventory": "topic_inventory.parquet",
+    "local_position": "topic_vehicle_local_position.parquet",
+}
+
 
 def query_text(name: str) -> str:
     if name not in QUERY_NAMES:
@@ -27,16 +35,18 @@ def query_text(name: str) -> str:
     )
 
 
-def register_views(connection: duckdb.DuckDBPyConnection, data_root: Path) -> None:
+def register_views(
+    connection: duckdb.DuckDBPyConnection,
+    data_root: Path,
+    views: tuple[str, ...] | None = None,
+) -> None:
     root = data_root.resolve().as_posix().replace("'", "''")
-    paths = {
-        "quality": f"{root}/log_id=*/quality.parquet",
-        "parameters": f"{root}/log_id=*/parameters.parquet",
-        "logmeta": f"{root}/log_id=*/logmeta.parquet",
-        "topic_inventory": f"{root}/log_id=*/topic_inventory.parquet",
-        "local_position": f"{root}/log_id=*/topic_vehicle_local_position.parquet",
-    }
-    for view, pattern in paths.items():
+    selected = tuple(VIEW_PATHS) if views is None else views
+    unknown = set(selected) - VIEW_PATHS.keys()
+    if unknown:
+        raise ValueError(f"unknown views: {', '.join(sorted(unknown))}")
+    for view in selected:
+        pattern = f"{root}/log_id=*/{VIEW_PATHS[view]}"
         connection.execute(
             f"CREATE OR REPLACE VIEW {view} AS "
             f"SELECT * FROM read_parquet('{pattern}', union_by_name=true)"

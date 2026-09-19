@@ -1,7 +1,7 @@
 import duckdb
 import pandas as pd
 
-from px4reqcheck.analytics.queries import QUERY_NAMES, query_text, run_query
+from px4reqcheck.analytics.queries import QUERY_NAMES, query_text, register_views, run_query
 from px4reqcheck.analytics.report import generate_static_figures
 
 
@@ -12,7 +12,7 @@ def connection_with_fixtures() -> duckdb.DuckDBPyConnection:
     )
     connection.execute(
         "INSERT INTO quality VALUES ('a', 'gap', 2, ''), ('b', 'gap', 1, ''), "
-        "('a', 'duplicate', 3, '')"
+        "('a', 'duplicate', 3, ''), ('b', 'duplicate', 0, '')"
     )
     connection.execute(
         "CREATE TABLE topic_inventory(log_id VARCHAR, topic VARCHAR, row_count BIGINT)"
@@ -44,6 +44,8 @@ def test_full_scan_quality_query() -> None:
     gap = result.loc[result["check_name"] == "gap"].iloc[0]
     assert gap["logs_reported"] == 2
     assert gap["total_findings"] == 3
+    duplicate = result.loc[result["check_name"] == "duplicate"].iloc[0]
+    assert duplicate["logs_reported"] == 1
 
 
 def test_per_log_group_by_query() -> None:
@@ -108,3 +110,17 @@ def test_register_views_and_generate_figures_from_parquet(tmp_path) -> None:
         "duration-by-firmware.png",
     ]
     assert all(path.stat().st_size > 0 for path in generated)
+
+
+def test_register_views_can_select_only_available_inputs(tmp_path) -> None:
+    partition = tmp_path / "parquet" / "log_id=a"
+    partition.mkdir(parents=True)
+    pd.DataFrame([{"log_id": "a", "check": "gap", "count": 0}]).to_parquet(
+        partition / "quality.parquet", index=False
+    )
+    connection = duckdb.connect()
+
+    register_views(connection, tmp_path / "parquet", views=("quality",))
+
+    assert connection.execute("SELECT count(*) FROM quality").fetchone() == (1,)
+    connection.close()
