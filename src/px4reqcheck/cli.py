@@ -9,6 +9,7 @@ from typing import Annotated
 import typer
 
 from px4reqcheck.analytics.report import generate_static_figures
+from px4reqcheck.analytics.requirements_report import generate_requirements_report
 from px4reqcheck.benchmark import (
     benchmark_ingest,
     benchmark_sql,
@@ -22,8 +23,10 @@ from px4reqcheck.ingest.pipeline import ingest_manifest
 app = typer.Typer(no_args_is_help=True)
 corpus_app = typer.Typer(no_args_is_help=True)
 benchmark_app = typer.Typer(no_args_is_help=True)
+requirements_app = typer.Typer(no_args_is_help=True)
 app.add_typer(corpus_app, name="corpus")
 app.add_typer(benchmark_app, name="benchmark")
+app.add_typer(requirements_app, name="requirements")
 
 
 @app.command("analyze")
@@ -34,6 +37,17 @@ def analyze(
     """Run committed analytical queries and emit static figures."""
     generated = generate_static_figures(data_root, output)
     typer.echo(f"generated {len(generated)} figures")
+
+
+@requirements_app.command("evaluate")
+def requirements_evaluate(
+    data_root: Annotated[Path, typer.Option("--data-root")] = Path("data/parquet"),
+    manifest: Annotated[Path, typer.Option("--manifest")] = Path("corpus/manifest.json"),
+    output: Annotated[Path, typer.Option("--output")] = Path("docs/report"),
+) -> None:
+    """Evaluate all requirement/log pairs and generate traceability artifacts."""
+    generated = generate_requirements_report(data_root, output, manifest)
+    typer.echo(f"generated {len(generated)} requirement artifacts")
 
 
 @benchmark_app.command("ingest")

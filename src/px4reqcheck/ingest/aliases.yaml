@@ -31,6 +31,24 @@ gps:
   candidates:
     - {topic: sensor_gps, field: fix_type, min_version: "1.13", max_version: null, scale: 1.0, unit: fix_type}
     - {topic: vehicle_gps_position, field: fix_type, min_version: null, max_version: "1.12", scale: 1.0, unit: fix_type}
+gps_latitude:
+  unit: deg
+  candidates:
+    - {topic: sensor_gps, field: latitude_deg, min_version: "1.15", max_version: null, scale: 1.0, unit: deg}
+    - {topic: sensor_gps, field: lat, min_version: "1.13", max_version: "1.14", scale: 0.0000001, unit: deg}
+    - {topic: vehicle_gps_position, field: lat, min_version: null, max_version: "1.12", scale: 0.0000001, unit: deg}
+gps_longitude:
+  unit: deg
+  candidates:
+    - {topic: sensor_gps, field: longitude_deg, min_version: "1.15", max_version: null, scale: 1.0, unit: deg}
+    - {topic: sensor_gps, field: lon, min_version: "1.13", max_version: "1.14", scale: 0.0000001, unit: deg}
+    - {topic: vehicle_gps_position, field: lon, min_version: null, max_version: "1.12", scale: 0.0000001, unit: deg}
+gps_altitude:
+  unit: m
+  candidates:
+    - {topic: sensor_gps, field: altitude_msl_m, min_version: "1.15", max_version: null, scale: 1.0, unit: m}
+    - {topic: sensor_gps, field: alt, min_version: "1.13", max_version: "1.14", scale: 0.001, unit: m}
+    - {topic: vehicle_gps_position, field: alt, min_version: null, max_version: "1.12", scale: 0.001, unit: m}
 trajectory_setpoint:
   unit: m
   candidates:

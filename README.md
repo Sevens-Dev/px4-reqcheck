@@ -2,9 +2,9 @@
 
 Python, Parquet, and DuckDB pipeline for reproducibly evaluating public PX4 telemetry against machine-readable flight requirements.
 
-**49 tests** · [![CI](https://github.com/Sevens-Dev/px4-reqcheck/actions/workflows/ci.yml/badge.svg)](https://github.com/Sevens-Dev/px4-reqcheck/actions/workflows/ci.yml) · **187,231 telemetry rows/s median ingest** ([10 cold-cache runs and full measurement contract](docs/benchmarks/week2-results.md))
+**55 tests** · [![CI](https://github.com/Sevens-Dev/px4-reqcheck/actions/workflows/ci.yml/badge.svg)](https://github.com/Sevens-Dev/px4-reqcheck/actions/workflows/ci.yml) · **187,231 telemetry rows/s median ingest** ([10 cold-cache runs and full measurement contract](docs/benchmarks/week2-results.md))
 
-One-command validation after `uv sync --all-groups --locked`: `make all`
+One-command report generation after corpus setup: `make all`
 
 ## What this is not
 
@@ -35,7 +35,7 @@ From a clone, validate the source and tests:
 
 ```bash
 uv sync --all-groups --locked
-make all
+make check
 ```
 
 Build the best-effort public corpus, normalize it, and generate the current figures:
@@ -43,7 +43,7 @@ Build the best-effort public corpus, normalize it, and generate the current figu
 ```bash
 make corpus
 make ingest
-make figures
+make all
 ```
 
 The published timing was reproduced on a clean Ubuntu 24.04 GitHub Actions hosted runner, not on the development host. Trigger the committed workflow and download its raw artifact:
@@ -62,7 +62,8 @@ The benchmark artifact records CPU, RAM, runner type, exact commands, tool versi
 - Whitelist-bounded ULog ingest into per-log Parquet using a half-core process pool.
 - Reporting for timestamp monotonicity, gaps, duplicates, physical ranges, missing topics, sample rate, and additional topic instances; samples are reported, never silently dropped.
 - Seven pure flight-metric functions with synthetic hand-computed tests.
+- Seven machine-readable requirements with ordered aliases, sentinel-safe thresholds, exhaustive non-evaluable causes, and a committed 20-log traceability matrix.
 - Five committed analytical SQL queries and two static Matplotlib figures.
 - Preregistered DuckDB-versus-SQLite comparison with committed raw results and an explicit null result.
 
-The next milestone adds the seven requirements, aliased parameter resolution, sentinel handling, total three-valued verdicts, coverage accounting, traceability matrix, and generated report.
+The next milestone adds the independent C++ verdict checker and raw-sample descent metric.

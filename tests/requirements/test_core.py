@@ -114,6 +114,22 @@ def test_unit_mismatch_is_refused() -> None:
         )
 
 
+def test_threshold_expression_unit_mismatch_is_refused() -> None:
+    item = Requirement(
+        id="UNIT-MISMATCH",
+        title="unit mismatch",
+        metric="distance",
+        unit="m",
+        threshold=parse_expression("COM_DISARM_LAND"),
+        comparator="<=",
+        requires_params=("COM_DISARM_LAND",),
+        requires_signals=(),
+    )
+
+    with pytest.raises(ValueError, match="threshold unit mismatch"):
+        resolve_threshold(item, ALIASES, {"COM_DISARM_LAND": 5}, [])
+
+
 def test_not_evaluable_cause_precedence_is_deterministic() -> None:
     verdict = evaluate_requirement(
         log_id="a",

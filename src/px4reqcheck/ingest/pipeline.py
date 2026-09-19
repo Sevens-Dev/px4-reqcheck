@@ -58,6 +58,19 @@ def _parameter_rows(log_id: str, ulog: ULog) -> pd.DataFrame:
     )
 
 
+def _parameter_change_rows(log_id: str, ulog: ULog) -> pd.DataFrame:
+    rows = [
+        {
+            "log_id": log_id,
+            "timestamp": int(timestamp),
+            "name": name,
+            "value_num": float(value),
+        }
+        for timestamp, name, value in ulog.changed_parameters
+    ]
+    return pd.DataFrame(rows, columns=["log_id", "timestamp", "name", "value_num"])
+
+
 def ingest_log(log_id: str, source: Path, output_root: Path) -> dict[str, Any]:
     """Write whitelisted instance-zero topics and Week 1 quality records."""
     ulog = ULog(str(source), message_name_filter_list=WHITELIST)
@@ -130,6 +143,9 @@ def ingest_log(log_id: str, source: Path, output_root: Path) -> dict[str, Any]:
     for topic in sorted(set(WHITELIST) - present_topics):
         quality.append({"log_id": log_id, "check": "topic_missing", "count": 1, "detail": topic})
     _parameter_rows(log_id, ulog).to_parquet(destination / "parameters.parquet", index=False)
+    _parameter_change_rows(log_id, ulog).to_parquet(
+        destination / "parameter_changes.parquet", index=False
+    )
     pd.DataFrame(quality).to_parquet(destination / "quality.parquet", index=False)
     pd.DataFrame(inventory).to_parquet(destination / "topic_inventory.parquet", index=False)
     version = ulog.get_version_info()

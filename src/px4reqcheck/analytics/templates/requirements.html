@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PX4 requirement traceability</title>
+    <style>
+      body { font: 16px/1.5 system-ui, sans-serif; margin: 2rem auto; max-width: 78rem; padding: 0 1rem; color: #17212b; }
+      table { border-collapse: collapse; width: 100%; font-size: .85rem; }
+      th, td { border: 1px solid #cbd5df; padding: .45rem; text-align: right; }
+      th:first-child, td:first-child { text-align: left; }
+      th { background: #16324f; color: white; position: sticky; top: 0; }
+      .table-wrap { overflow-x: auto; }
+      .warning { border-left: .4rem solid #b45309; background: #fff7ed; padding: 1rem; }
+    </style>
+  </head>
+  <body>
+    <h1>PX4 requirement traceability</h1>
+    <p>This report evaluates configured limits over the checksum-pinned public corpus. It is not a vehicle certification or controller-performance analysis.</p>
+    <p><strong>Corpus provenance:</strong> {{ log_count }} public PX4 Flight Review log identifiers from <code>corpus/manifest.json</code> (SHA-256 <code>{{ manifest_sha256 }}</code>). Raw ULogs are not redistributed.</p>
+    <div class="warning"><strong>Coverage is a result:</strong> {{ evaluable }} of {{ total }} requirement/log pairs were evaluable. Non-evaluable causes are retained below rather than dropped.</div>
+    <h2>Traceability matrix</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr>{% for key in matrix[0].keys() %}<th>{{ key }}</th>{% endfor %}</tr></thead>
+      <tbody>{% for row in matrix %}<tr>{% for value in row.values() %}<td>{{ value }}</td>{% endfor %}</tr>{% endfor %}</tbody>
+    </table>
+    </div>
+    <p><a href="traceability.html">Open the interactive per-log drill-down</a> · <a href="verdicts.json">Raw verdicts</a> · <a href="resolved-signals.csv">Resolved signal aliases</a></p>
+    <h2>Corpus figures</h2>
+    <img src="assets/quality-findings.png" alt="Reported data-quality findings" style="max-width:100%">
+    <img src="assets/duration-by-firmware.png" alt="Mean log duration by firmware" style="max-width:100%">
+    <h2>Method and limitations</h2>
+    <p>Thresholds resolve from each log's initial parameters through ordered aliases. Disabled sentinel values and parameters changed in flight produce explicit non-evaluable verdicts. Public logs may omit required topics, and the corpus is not representative of all PX4 vehicles or operations.</p>
+  </body>
+</html>

@@ -1,0 +1,2482 @@
+[
+  {
+    "log_id": "0d728b7d-8d15-4975-b834-1c6b3174b062",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "pass",
+    "metric_value": 0.8911696076393127,
+    "threshold_value": 0.15000000596046448,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.15000000596046448,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "0d728b7d-8d15-4975-b834-1c6b3174b062",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "pass",
+    "metric_value": 23.939620971679688,
+    "threshold_value": 21.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 6.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 3.5,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "0d728b7d-8d15-4975-b834-1c6b3174b062",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": null,
+    "comparator": "<=",
+    "cause": "param_disabled",
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 0.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "0d728b7d-8d15-4975-b834-1c6b3174b062",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "fail",
+    "metric_value": 0.93658007979393,
+    "threshold_value": 0.699999988079071,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 0.699999988079071,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 5.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "0d728b7d-8d15-4975-b834-1c6b3174b062",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "pass",
+    "metric_value": 3.0,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "0d728b7d-8d15-4975-b834-1c6b3174b062",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": "window_missing",
+    "source_params": []
+  },
+  {
+    "log_id": "0d728b7d-8d15-4975-b834-1c6b3174b062",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "pass",
+    "metric_value": 0.2582687465674972,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "24835a82-9762-4118-84a3-71097ecc2a40",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "pass",
+    "metric_value": 0.5199999809265137,
+    "threshold_value": 0.20000000298023224,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.20000000298023224,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "24835a82-9762-4118-84a3-71097ecc2a40",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "pass",
+    "metric_value": 22.670001983642578,
+    "threshold_value": 21.59999942779541,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 6.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 3.5999999046325684,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "24835a82-9762-4118-84a3-71097ecc2a40",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": null,
+    "comparator": "<=",
+    "cause": "param_disabled",
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 0.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "24835a82-9762-4118-84a3-71097ecc2a40",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "pass",
+    "metric_value": 0.3128394976258277,
+    "threshold_value": 0.699999988079071,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 0.699999988079071,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 5.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "24835a82-9762-4118-84a3-71097ecc2a40",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "pass",
+    "metric_value": 6.0,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "24835a82-9762-4118-84a3-71097ecc2a40",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "pass",
+    "metric_value": 0.19877281800977364,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "24835a82-9762-4118-84a3-71097ecc2a40",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": "insufficient_samples",
+    "source_params": []
+  },
+  {
+    "log_id": "36d2e007-ddeb-40b1-ac63-16159708cca6",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "pass",
+    "metric_value": 0.5002479553222656,
+    "threshold_value": 0.15000000596046448,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.15000000596046448,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "36d2e007-ddeb-40b1-ac63-16159708cca6",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "pass",
+    "metric_value": 15.300047874450684,
+    "threshold_value": 14.399999618530273,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 4.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 3.5999999046325684,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "36d2e007-ddeb-40b1-ac63-16159708cca6",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": null,
+    "comparator": "<=",
+    "cause": "param_disabled",
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 0.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "36d2e007-ddeb-40b1-ac63-16159708cca6",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "pass",
+    "metric_value": 0.666279748082161,
+    "threshold_value": 0.699999988079071,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 0.699999988079071,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 5.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "36d2e007-ddeb-40b1-ac63-16159708cca6",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "pass",
+    "metric_value": 3.0,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "36d2e007-ddeb-40b1-ac63-16159708cca6",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "pass",
+    "metric_value": 0.0955937220011647,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "36d2e007-ddeb-40b1-ac63-16159708cca6",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "pass",
+    "metric_value": 0.20339462230928582,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "6032c737-ca04-4331-92a2-d666d9a39d51",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "pass",
+    "metric_value": 0.3999999761581421,
+    "threshold_value": 0.20000000298023224,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.20000000298023224,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "6032c737-ca04-4331-92a2-d666d9a39d51",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "pass",
+    "metric_value": 22.240001678466797,
+    "threshold_value": 21.59999942779541,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 6.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 3.5999999046325684,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "6032c737-ca04-4331-92a2-d666d9a39d51",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": null,
+    "comparator": "<=",
+    "cause": "param_disabled",
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 0.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "6032c737-ca04-4331-92a2-d666d9a39d51",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "pass",
+    "metric_value": 0.6555222362279892,
+    "threshold_value": 0.699999988079071,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 0.699999988079071,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 5.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "6032c737-ca04-4331-92a2-d666d9a39d51",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "pass",
+    "metric_value": 6.0,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "6032c737-ca04-4331-92a2-d666d9a39d51",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": "window_missing",
+    "source_params": []
+  },
+  {
+    "log_id": "6032c737-ca04-4331-92a2-d666d9a39d51",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": "insufficient_samples",
+    "source_params": []
+  },
+  {
+    "log_id": "73513a42-ca33-4642-afef-ff592005b539",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "pass",
+    "metric_value": 0.38963210582733154,
+    "threshold_value": 0.25,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.25,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "73513a42-ca33-4642-afef-ff592005b539",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "pass",
+    "metric_value": 46.951114654541016,
+    "threshold_value": 39.89999866485596,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 14.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 2.8499999046325684,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "73513a42-ca33-4642-afef-ff592005b539",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": null,
+    "comparator": "<=",
+    "cause": "param_disabled",
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 0.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "73513a42-ca33-4642-afef-ff592005b539",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "pass",
+    "metric_value": 0.08498243987560271,
+    "threshold_value": 0.6000000238418579,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 0.6000000238418579,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 5.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "73513a42-ca33-4642-afef-ff592005b539",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "pass",
+    "metric_value": 3.0,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "73513a42-ca33-4642-afef-ff592005b539",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "pass",
+    "metric_value": 0.19683609046694542,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "73513a42-ca33-4642-afef-ff592005b539",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "fail",
+    "metric_value": 12.485239478951287,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "82bb47cb-dbd5-4755-9553-0990124e17ab",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "pass",
+    "metric_value": 0.9899999499320984,
+    "threshold_value": 0.20000000298023224,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.20000000298023224,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "82bb47cb-dbd5-4755-9553-0990124e17ab",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "pass",
+    "metric_value": 26.080001831054688,
+    "threshold_value": 21.59999942779541,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 6.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 3.5999999046325684,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "82bb47cb-dbd5-4755-9553-0990124e17ab",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": null,
+    "comparator": "<=",
+    "cause": "param_disabled",
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 0.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "82bb47cb-dbd5-4755-9553-0990124e17ab",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "pass",
+    "metric_value": 0.44281296283006666,
+    "threshold_value": 0.699999988079071,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 0.699999988079071,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 5.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "82bb47cb-dbd5-4755-9553-0990124e17ab",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "pass",
+    "metric_value": 6.0,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "82bb47cb-dbd5-4755-9553-0990124e17ab",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "pass",
+    "metric_value": 0.139801836157123,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "82bb47cb-dbd5-4755-9553-0990124e17ab",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": "insufficient_samples",
+    "source_params": []
+  },
+  {
+    "log_id": "a4e7c842-a5af-4469-8357-bb14b6aeec06",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "pass",
+    "metric_value": 0.4399999976158142,
+    "threshold_value": 0.20000000298023224,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.20000000298023224,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "a4e7c842-a5af-4469-8357-bb14b6aeec06",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "pass",
+    "metric_value": 22.39000129699707,
+    "threshold_value": 21.59999942779541,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 6.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 3.5999999046325684,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "a4e7c842-a5af-4469-8357-bb14b6aeec06",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": null,
+    "comparator": "<=",
+    "cause": "param_disabled",
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 0.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "a4e7c842-a5af-4469-8357-bb14b6aeec06",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "pass",
+    "metric_value": 0.44396555721759795,
+    "threshold_value": 0.699999988079071,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 0.699999988079071,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 5.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "a4e7c842-a5af-4469-8357-bb14b6aeec06",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "pass",
+    "metric_value": 4.0,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "a4e7c842-a5af-4469-8357-bb14b6aeec06",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "pass",
+    "metric_value": 0.10557755750368386,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "a4e7c842-a5af-4469-8357-bb14b6aeec06",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "fail",
+    "metric_value": 4.499751000049312,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "ad0d295b-ebfc-4382-ad7c-e72ad43091b0",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "pass",
+    "metric_value": 0.26203447580337524,
+    "threshold_value": 0.15000000596046448,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.15000000596046448,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "ad0d295b-ebfc-4382-ad7c-e72ad43091b0",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "pass",
+    "metric_value": 22.097776412963867,
+    "threshold_value": 21.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 6.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 3.5,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "ad0d295b-ebfc-4382-ad7c-e72ad43091b0",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": null,
+    "comparator": "<=",
+    "cause": "param_disabled",
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 0.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "ad0d295b-ebfc-4382-ad7c-e72ad43091b0",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "pass",
+    "metric_value": 0.6450694799423218,
+    "threshold_value": 0.699999988079071,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 0.699999988079071,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 10.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "ad0d295b-ebfc-4382-ad7c-e72ad43091b0",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "pass",
+    "metric_value": 4.0,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "ad0d295b-ebfc-4382-ad7c-e72ad43091b0",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "pass",
+    "metric_value": 0.051031882271939825,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "ad0d295b-ebfc-4382-ad7c-e72ad43091b0",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "fail",
+    "metric_value": 0.4054568160651067,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "c597ba1f-f0cd-4228-9820-b4d5d2e2b97a",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "pass",
+    "metric_value": 0.5998132228851318,
+    "threshold_value": 0.15000000596046448,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.15000000596046448,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "c597ba1f-f0cd-4228-9820-b4d5d2e2b97a",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "pass",
+    "metric_value": 22.676410675048828,
+    "threshold_value": 19.200000286102295,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 6.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 3.200000047683716,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "c597ba1f-f0cd-4228-9820-b4d5d2e2b97a",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": null,
+    "comparator": "<=",
+    "cause": "param_disabled",
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 0.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "c597ba1f-f0cd-4228-9820-b4d5d2e2b97a",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "fail",
+    "metric_value": 0.7812794595956802,
+    "threshold_value": 0.699999988079071,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 0.699999988079071,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 5.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "c597ba1f-f0cd-4228-9820-b4d5d2e2b97a",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "pass",
+    "metric_value": 3.0,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "c597ba1f-f0cd-4228-9820-b4d5d2e2b97a",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "pass",
+    "metric_value": 0.17126738693100058,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "c597ba1f-f0cd-4228-9820-b4d5d2e2b97a",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "fail",
+    "metric_value": 0.5578718485344282,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "c83c0194-e4e5-4959-a02d-9f3b70d7ece6",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "pass",
+    "metric_value": 0.6505810618400574,
+    "threshold_value": 0.25,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.25,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "c83c0194-e4e5-4959-a02d-9f3b70d7ece6",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "pass",
+    "metric_value": 46.45643997192383,
+    "threshold_value": 39.59999942779541,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 12.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 3.299999952316284,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "c83c0194-e4e5-4959-a02d-9f3b70d7ece6",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": null,
+    "comparator": "<=",
+    "cause": "param_disabled",
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 0.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "c83c0194-e4e5-4959-a02d-9f3b70d7ece6",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": 0.6000000238418579,
+    "comparator": "<=",
+    "cause": "insufficient_samples",
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 0.6000000238418579,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 5.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "c83c0194-e4e5-4959-a02d-9f3b70d7ece6",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "pass",
+    "metric_value": 4.0,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "c83c0194-e4e5-4959-a02d-9f3b70d7ece6",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "fail",
+    "metric_value": 1.5556781739297445,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "c83c0194-e4e5-4959-a02d-9f3b70d7ece6",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": "insufficient_samples",
+    "source_params": []
+  },
+  {
+    "log_id": "d3ca6745-7f23-4030-a469-1f02eaaf2f8f",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "pass",
+    "metric_value": 0.7604561448097229,
+    "threshold_value": 0.15000000596046448,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.15000000596046448,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "d3ca6745-7f23-4030-a469-1f02eaaf2f8f",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "pass",
+    "metric_value": 23.670557022094727,
+    "threshold_value": 21.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 6.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 3.5,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "d3ca6745-7f23-4030-a469-1f02eaaf2f8f",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": null,
+    "comparator": "<=",
+    "cause": "param_disabled",
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 0.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "d3ca6745-7f23-4030-a469-1f02eaaf2f8f",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "fail",
+    "metric_value": 0.9277549117803573,
+    "threshold_value": 0.699999988079071,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 0.699999988079071,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 5.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "d3ca6745-7f23-4030-a469-1f02eaaf2f8f",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "pass",
+    "metric_value": 3.0,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "d3ca6745-7f23-4030-a469-1f02eaaf2f8f",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "pass",
+    "metric_value": 0.2172879345955692,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "d3ca6745-7f23-4030-a469-1f02eaaf2f8f",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "fail",
+    "metric_value": 0.9955803056816087,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "deea3db0-6ff9-4854-9008-2f13b73928b8",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "pass",
+    "metric_value": 0.5002479553222656,
+    "threshold_value": 0.15000000596046448,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.15000000596046448,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "deea3db0-6ff9-4854-9008-2f13b73928b8",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "pass",
+    "metric_value": 15.300047874450684,
+    "threshold_value": 14.399999618530273,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 4.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 3.5999999046325684,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "deea3db0-6ff9-4854-9008-2f13b73928b8",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": null,
+    "comparator": "<=",
+    "cause": "param_disabled",
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 0.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "deea3db0-6ff9-4854-9008-2f13b73928b8",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "fail",
+    "metric_value": 0.8222799897193909,
+    "threshold_value": 0.699999988079071,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 0.699999988079071,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 5.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "deea3db0-6ff9-4854-9008-2f13b73928b8",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "pass",
+    "metric_value": 3.0,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "deea3db0-6ff9-4854-9008-2f13b73928b8",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "pass",
+    "metric_value": 0.18740821927998857,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "deea3db0-6ff9-4854-9008-2f13b73928b8",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "fail",
+    "metric_value": 0.42614418768833656,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "e5c521d2-d6bd-4e35-b6ad-b855bafd644b",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "fail",
+    "metric_value": 0.0,
+    "threshold_value": 0.15000000596046448,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.15000000596046448,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "e5c521d2-d6bd-4e35-b6ad-b855bafd644b",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "fail",
+    "metric_value": 0.02809753268957138,
+    "threshold_value": 16.799999713897705,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 6.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 2.799999952316284,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "e5c521d2-d6bd-4e35-b6ad-b855bafd644b",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": null,
+    "comparator": "<=",
+    "cause": "param_disabled",
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 0.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "e5c521d2-d6bd-4e35-b6ad-b855bafd644b",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "pass",
+    "metric_value": 0.2260249026119709,
+    "threshold_value": 0.6000000238418579,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 0.6000000238418579,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 5.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "e5c521d2-d6bd-4e35-b6ad-b855bafd644b",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "pass",
+    "metric_value": 6.0,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "e5c521d2-d6bd-4e35-b6ad-b855bafd644b",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "pass",
+    "metric_value": 0.07651122130917885,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "e5c521d2-d6bd-4e35-b6ad-b855bafd644b",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": "insufficient_samples",
+    "source_params": []
+  },
+  {
+    "log_id": "e98b1b76-8cb1-4b94-985a-907e00bdbfed",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "pass",
+    "metric_value": 0.6599999666213989,
+    "threshold_value": 0.20000000298023224,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.20000000298023224,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "e98b1b76-8cb1-4b94-985a-907e00bdbfed",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "pass",
+    "metric_value": 23.21000099182129,
+    "threshold_value": 21.59999942779541,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 6.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 3.5999999046325684,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "e98b1b76-8cb1-4b94-985a-907e00bdbfed",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": null,
+    "comparator": "<=",
+    "cause": "param_disabled",
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 0.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "e98b1b76-8cb1-4b94-985a-907e00bdbfed",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "pass",
+    "metric_value": 0.17684948742389678,
+    "threshold_value": 0.699999988079071,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 0.699999988079071,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 5.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "e98b1b76-8cb1-4b94-985a-907e00bdbfed",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "pass",
+    "metric_value": 6.0,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "e98b1b76-8cb1-4b94-985a-907e00bdbfed",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "pass",
+    "metric_value": 0.18651797232232423,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "e98b1b76-8cb1-4b94-985a-907e00bdbfed",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": "insufficient_samples",
+    "source_params": []
+  },
+  {
+    "log_id": "ec7a8856-04f9-4e58-8e03-bd16c3f7a27a",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "pass",
+    "metric_value": 0.5002479553222656,
+    "threshold_value": 0.15000000596046448,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.15000000596046448,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "ec7a8856-04f9-4e58-8e03-bd16c3f7a27a",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "pass",
+    "metric_value": 15.300047874450684,
+    "threshold_value": 14.399999618530273,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 4.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 3.5999999046325684,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "ec7a8856-04f9-4e58-8e03-bd16c3f7a27a",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": null,
+    "comparator": "<=",
+    "cause": "param_disabled",
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 0.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "ec7a8856-04f9-4e58-8e03-bd16c3f7a27a",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "fail",
+    "metric_value": 0.7025547385215759,
+    "threshold_value": 0.699999988079071,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 0.699999988079071,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 5.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "ec7a8856-04f9-4e58-8e03-bd16c3f7a27a",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "pass",
+    "metric_value": 3.0,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "ec7a8856-04f9-4e58-8e03-bd16c3f7a27a",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "pass",
+    "metric_value": 0.11864862286441434,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "ec7a8856-04f9-4e58-8e03-bd16c3f7a27a",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "pass",
+    "metric_value": 0.023040919936424143,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "f4f3389d-f121-4d3b-8bd1-cd7d4b4e5088",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "pass",
+    "metric_value": 0.5310743451118469,
+    "threshold_value": 0.2199999988079071,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.2199999988079071,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "f4f3389d-f121-4d3b-8bd1-cd7d4b4e5088",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "pass",
+    "metric_value": 46.701576232910156,
+    "threshold_value": 42.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 12.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 3.5,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "f4f3389d-f121-4d3b-8bd1-cd7d4b4e5088",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": null,
+    "comparator": "<=",
+    "cause": "param_disabled",
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 0.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "f4f3389d-f121-4d3b-8bd1-cd7d4b4e5088",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "fail",
+    "metric_value": 0.7387408941984176,
+    "threshold_value": 0.699999988079071,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 0.699999988079071,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 5.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "f4f3389d-f121-4d3b-8bd1-cd7d4b4e5088",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "pass",
+    "metric_value": 6.0,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "f4f3389d-f121-4d3b-8bd1-cd7d4b4e5088",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "pass",
+    "metric_value": 0.09243144189715338,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "f4f3389d-f121-4d3b-8bd1-cd7d4b4e5088",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "fail",
+    "metric_value": 2.971818025214446,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "f51459ef-b790-4459-a92e-21eb512ddc9a",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "pass",
+    "metric_value": 0.7654184699058533,
+    "threshold_value": 0.5,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.5,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "f51459ef-b790-4459-a92e-21eb512ddc9a",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "pass",
+    "metric_value": 23.44974136352539,
+    "threshold_value": 22.200000286102295,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 6.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 3.700000047683716,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "f51459ef-b790-4459-a92e-21eb512ddc9a",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": null,
+    "comparator": "<=",
+    "cause": "param_disabled",
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 0.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "f51459ef-b790-4459-a92e-21eb512ddc9a",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "pass",
+    "metric_value": 0.182070592045784,
+    "threshold_value": 0.6000000238418579,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 0.6000000238418579,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 5.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "f51459ef-b790-4459-a92e-21eb512ddc9a",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "pass",
+    "metric_value": 3.0,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "f51459ef-b790-4459-a92e-21eb512ddc9a",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "pass",
+    "metric_value": 0.13544006296512906,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "f51459ef-b790-4459-a92e-21eb512ddc9a",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "fail",
+    "metric_value": 0.8786664539622862,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "f6591f05-7b14-4aad-9088-beec302362db",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "pass",
+    "metric_value": 0.3590443730354309,
+    "threshold_value": 0.15000000596046448,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.15000000596046448,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "f6591f05-7b14-4aad-9088-beec302362db",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "pass",
+    "metric_value": 44.82008743286133,
+    "threshold_value": 42.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 12.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 3.5,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "f6591f05-7b14-4aad-9088-beec302362db",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": null,
+    "comparator": "<=",
+    "cause": "param_disabled",
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 0.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "f6591f05-7b14-4aad-9088-beec302362db",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "fail",
+    "metric_value": 0.720499700307846,
+    "threshold_value": 0.699999988079071,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 0.699999988079071,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 5.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "f6591f05-7b14-4aad-9088-beec302362db",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "pass",
+    "metric_value": 4.0,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "f6591f05-7b14-4aad-9088-beec302362db",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "pass",
+    "metric_value": 0.05031962024473792,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "f6591f05-7b14-4aad-9088-beec302362db",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "fail",
+    "metric_value": 4.007099834525596,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "fa948c8e-93b2-4037-a9c0-e6bcbcfd72a1",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "pass",
+    "metric_value": 0.41045495867729187,
+    "threshold_value": 0.15000000596046448,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.15000000596046448,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "fa948c8e-93b2-4037-a9c0-e6bcbcfd72a1",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "pass",
+    "metric_value": 21.70682716369629,
+    "threshold_value": 21.59999942779541,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 6.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 3.5999999046325684,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "fa948c8e-93b2-4037-a9c0-e6bcbcfd72a1",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": null,
+    "comparator": "<=",
+    "cause": "param_disabled",
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 0.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "fa948c8e-93b2-4037-a9c0-e6bcbcfd72a1",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "pass",
+    "metric_value": 0.37547585368156433,
+    "threshold_value": 0.699999988079071,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 0.699999988079071,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 5.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "fa948c8e-93b2-4037-a9c0-e6bcbcfd72a1",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "pass",
+    "metric_value": 6.0,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "fa948c8e-93b2-4037-a9c0-e6bcbcfd72a1",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "pass",
+    "metric_value": 0.12392685145991883,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "fa948c8e-93b2-4037-a9c0-e6bcbcfd72a1",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "fail",
+    "metric_value": 2.9416831294765684,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "fd395d03-12c2-488a-b307-20c3b1dbfe89",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "pass",
+    "metric_value": 0.5799999833106995,
+    "threshold_value": 0.20000000298023224,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.20000000298023224,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "fd395d03-12c2-488a-b307-20c3b1dbfe89",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "pass",
+    "metric_value": 23.010000228881836,
+    "threshold_value": 21.59999942779541,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 6.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 3.5999999046325684,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "fd395d03-12c2-488a-b307-20c3b1dbfe89",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": null,
+    "comparator": "<=",
+    "cause": "param_disabled",
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 0.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "fd395d03-12c2-488a-b307-20c3b1dbfe89",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "fail",
+    "metric_value": 0.755020797252655,
+    "threshold_value": 0.699999988079071,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 0.699999988079071,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 5.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "fd395d03-12c2-488a-b307-20c3b1dbfe89",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "pass",
+    "metric_value": 6.0,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "fd395d03-12c2-488a-b307-20c3b1dbfe89",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "pass",
+    "metric_value": 0.24959062669691673,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "fd395d03-12c2-488a-b307-20c3b1dbfe89",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": "insufficient_samples",
+    "source_params": []
+  }
+]
