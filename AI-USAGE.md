@@ -11,6 +11,7 @@ The original planning document used “hand-written” labels for several compon
 - 2026-09-16: implemented the Week 1 corpus, normalized ingest, quality checks, and tests.
 - 2026-09-16: implemented the Week 2 flight metrics, analytical SQL, and static reports.
 - 2026-09-19: implemented the preregistered benchmark harness and manual measurement workflow.
+- 2026-09-19: implemented the Week 3 requirement schema, safe expression parser, parameter aliases, threshold resolver, verdict model, and tests.
 
 ## Defects introduced by AI assistance
 

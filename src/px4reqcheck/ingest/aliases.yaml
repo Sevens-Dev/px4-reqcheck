@@ -1,0 +1,47 @@
+battery_remaining:
+  unit: fraction
+  candidates:
+    - {topic: battery_status, field: remaining, min_version: null, max_version: null, scale: 1.0, unit: fraction}
+battery_voltage:
+  unit: V
+  candidates:
+    - {topic: battery_status, field: voltage_filtered_v, min_version: null, max_version: null, scale: 1.0, unit: V}
+landed:
+  unit: boolean
+  candidates:
+    - {topic: vehicle_land_detected, field: landed, min_version: null, max_version: null, scale: 1.0, unit: boolean}
+local_position:
+  unit: m
+  candidates:
+    - {topic: vehicle_local_position, field: "x,y,z", min_version: null, max_version: null, scale: 1.0, unit: m}
+home_position:
+  unit: m
+  candidates:
+    - {topic: home_position, field: "x,y", min_version: null, max_version: null, scale: 1.0, unit: m}
+local_position_vz:
+  unit: m/s
+  candidates:
+    - {topic: vehicle_local_position, field: vz, min_version: null, max_version: null, scale: 1.0, unit: m/s}
+land_detected:
+  unit: boolean
+  candidates:
+    - {topic: vehicle_land_detected, field: landed, min_version: null, max_version: null, scale: 1.0, unit: boolean}
+gps:
+  unit: fix_type
+  candidates:
+    - {topic: sensor_gps, field: fix_type, min_version: "1.13", max_version: null, scale: 1.0, unit: fix_type}
+    - {topic: vehicle_gps_position, field: fix_type, min_version: null, max_version: "1.12", scale: 1.0, unit: fix_type}
+trajectory_setpoint:
+  unit: m
+  candidates:
+    - {topic: trajectory_setpoint, field: "position[2]", min_version: "1.13", max_version: null, scale: 1.0, unit: m}
+    - {topic: vehicle_local_position_setpoint, field: z, min_version: null, max_version: "1.12", scale: 1.0, unit: m}
+nav_state:
+  unit: enum
+  candidates:
+    - {topic: vehicle_status, field: nav_state, min_version: null, max_version: null, scale: 1.0, unit: enum}
+sensor_combined_or_imu_status:
+  unit: m/s^2
+  candidates:
+    - {topic: sensor_combined, field: "accelerometer_m_s2[2]", min_version: null, max_version: null, scale: 1.0, unit: m/s^2}
+    - {topic: vehicle_imu_status, field: accel_vibration_metric, min_version: null, max_version: null, scale: 1.0, unit: m/s^2}

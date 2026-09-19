@@ -2,7 +2,7 @@
 
 Python, Parquet, and DuckDB pipeline for reproducibly evaluating public PX4 telemetry against machine-readable flight requirements.
 
-**36 tests** · [![CI](https://github.com/Sevens-Dev/px4-reqcheck/actions/workflows/ci.yml/badge.svg)](https://github.com/Sevens-Dev/px4-reqcheck/actions/workflows/ci.yml) · **187,231 telemetry rows/s median ingest** ([10 cold-cache runs and full measurement contract](docs/benchmarks/week2-results.md))
+**49 tests** · [![CI](https://github.com/Sevens-Dev/px4-reqcheck/actions/workflows/ci.yml/badge.svg)](https://github.com/Sevens-Dev/px4-reqcheck/actions/workflows/ci.yml) · **187,231 telemetry rows/s median ingest** ([10 cold-cache runs and full measurement contract](docs/benchmarks/week2-results.md))
 
 One-command validation after `uv sync --all-groups --locked`: `make all`
 
