@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "benchmark": "ingest",
+  "runs": 10,
+  "statistic": "median of 10 cold-cache runs",
+  "cold_cache_command": "sudo scripts/drop-caches.sh",
+  "timed_region": "parse all manifest ULogs and write all normalized Parquet outputs",
+  "hardware": {
+    "cpu": "AMD EPYC 7763 64-Core Processor",
+    "ram": "16373452 kB",
+    "logical_cpus": "4",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39"
+  },
+  "versions": {
+    "python": "3.12.3",
+    "duckdb": "1.5.5",
+    "pandas": "2.3.3",
+    "pyarrow": "23.0.1",
+    "sqlite": "3.45.1"
+  },
+  "run_identity": {
+    "git_commit": "4ef944c4923f7d3844c5d546109dc947e3bf75e8",
+    "github_run_id": "35446881914",
+    "github_repository": "Sevens-Dev/px4-reqcheck"
+  },
+  "log_count": 20,
+  "telemetry_rows": 2135881,
+  "duration_seconds": [
+    11.534651991,
+    11.451819224,
+    11.530029591,
+    11.203523621,
+    11.305350373,
+    11.356604165,
+    11.40985476,
+    11.52805624,
+    11.405564593,
+    11.251510205
+  ],
+  "rows_per_second": [
+    185170.82280995883,
+    186510.19180635994,
+    185245.05797168167,
+    190643.68249257604,
+    188926.5639303862,
+    188073.914434967,
+    187196.160242797,
+    185276.76787253426,
+    187266.57348561825,
+    189830.6059439778
+  ],
+  "median_duration_seconds": 11.4077096765,
+  "median_rows_per_second": 187231.3668642076
+}
