@@ -1,6 +1,7 @@
 #include "descent.hpp"
 
 #include <cstdint>
+#include <limits>
 #include <fstream>
 #include <iostream>
 #include <optional>
@@ -14,11 +15,24 @@ namespace {
 
 using json = nlohmann::json;
 
+std::vector<double> nullable_doubles(const json& values) {
+  std::vector<double> result;
+  result.reserve(values.size());
+  for (const auto& value : values) {
+    result.push_back(value.is_null() ? std::numeric_limits<double>::quiet_NaN()
+                                     : value.get<double>());
+  }
+  return result;
+}
+
 px4reqcheck::MetricResult descent_from_json(const json& raw) {
+  if (!raw.at("reason").is_null()) {
+    return {std::nullopt, raw.at("reason").get<std::string>()};
+  }
   px4reqcheck::DescentInput input{
       raw.at("timestamps_us").get<std::vector<std::int64_t>>(),
-      raw.at("descent_vz").get<std::vector<double>>(),
-      raw.at("z_m").get<std::vector<double>>(),
+      nullable_doubles(raw.at("descent_vz")),
+      nullable_doubles(raw.at("z_m")),
       std::nullopt,
       raw.at("land_alt2_m").get<double>(),
   };
