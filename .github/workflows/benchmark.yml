@@ -1,0 +1,48 @@
+name: Week 2 benchmarks
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.8.22"
+          python-version: "3.12"
+          enable-cache: true
+      - run: uv sync --all-groups --locked
+      - name: Download the checksum-pinned corpus
+        run: make corpus
+      - name: Benchmark ingest
+        run: >-
+          uv run px4reqcheck benchmark ingest
+          --runs 10
+          --cold-cache-command 'sudo scripts/drop-caches.sh'
+          --output benchmark-output/ingest.json
+      - name: Build analytical inputs
+        run: make ingest
+      - name: Benchmark DuckDB and SQLite
+        run: >-
+          uv run px4reqcheck benchmark sql
+          --runs 10
+          --cold-cache-command 'sudo scripts/drop-caches.sh'
+          --output benchmark-output/sql.json
+      - name: Render report
+        run: >-
+          uv run px4reqcheck benchmark report
+          --ingest-result benchmark-output/ingest.json
+          --sql-result benchmark-output/sql.json
+          --output benchmark-output/week2-results.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: week2-benchmarks
+          path: benchmark-output/
+          if-no-files-found: error
+          retention-days: 30

@@ -23,6 +23,8 @@ For each engine/query pair, report the median of 10 runs. The hypothesis holds o
 
 The final run must state CPU, RAM, operating environment, Python/DuckDB/SQLite versions, exact command, cold-cache procedure, and whether client work is the bottleneck. WSL2 timing must use pinned cores via `taskset` or be moved to a quieter disclosed machine.
 
+The timed region begins immediately before opening an engine connection and ends after all result rows have been fetched and the connection has closed. For DuckDB this includes registering the query's Parquet view; for SQLite it includes opening the already-materialized, indexed database. SQLite materialization and index creation are setup costs outside the timed region. Before timing, the harness must assert that both engines return identical rows. Before every repetition, `sync` completes and Linux page, dentry, and inode caches are dropped. Engine order is fixed as DuckDB then SQLite for each query, and all ten repetitions for one engine complete before the next engine starts.
+
 ## Null-result sentence
 
 “On the preregistered 20-log slice, DuckDB was not at least 5x faster than SQLite on all three analytical queries; the repository retains DuckDB for direct Parquet access and operational simplicity, not a universal speed claim.”

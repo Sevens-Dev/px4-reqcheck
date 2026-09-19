@@ -9,13 +9,21 @@ from typing import Annotated
 import typer
 
 from px4reqcheck.analytics.report import generate_static_figures
+from px4reqcheck.benchmark import (
+    benchmark_ingest,
+    benchmark_sql,
+    render_benchmark_report,
+    write_result,
+)
 from px4reqcheck.corpus.download import download_manifest
 from px4reqcheck.corpus.manifest import build_manifest
 from px4reqcheck.ingest.pipeline import ingest_manifest
 
 app = typer.Typer(no_args_is_help=True)
 corpus_app = typer.Typer(no_args_is_help=True)
+benchmark_app = typer.Typer(no_args_is_help=True)
 app.add_typer(corpus_app, name="corpus")
+app.add_typer(benchmark_app, name="benchmark")
 
 
 @app.command("analyze")
@@ -26,6 +34,51 @@ def analyze(
     """Run committed analytical queries and emit static figures."""
     generated = generate_static_figures(data_root, output)
     typer.echo(f"generated {len(generated)} figures")
+
+
+@benchmark_app.command("ingest")
+def benchmark_ingest_command(
+    manifest: Annotated[Path, typer.Option("--manifest")] = Path("corpus/manifest.json"),
+    raw_dir: Annotated[Path, typer.Option("--raw-dir")] = Path("data/raw"),
+    runs: Annotated[int, typer.Option("--runs", min=1)] = 10,
+    cold_cache_command: Annotated[str, typer.Option("--cold-cache-command")] = (
+        "sudo scripts/drop-caches.sh"
+    ),
+    output: Annotated[Path, typer.Option("--output")] = Path("reports/benchmarks/ingest.json"),
+) -> None:
+    """Measure cold-cache ULog-to-Parquet ingest throughput."""
+    result = benchmark_ingest(manifest, raw_dir, runs, cold_cache_command)
+    write_result(result, output)
+    typer.echo(f"wrote {output}")
+
+
+@benchmark_app.command("sql")
+def benchmark_sql_command(
+    data_root: Annotated[Path, typer.Option("--data-root")] = Path("data/parquet"),
+    database: Annotated[Path, typer.Option("--database")] = Path("data/benchmark.sqlite"),
+    runs: Annotated[int, typer.Option("--runs", min=1)] = 10,
+    cold_cache_command: Annotated[str, typer.Option("--cold-cache-command")] = (
+        "sudo scripts/drop-caches.sh"
+    ),
+    output: Annotated[Path, typer.Option("--output")] = Path("reports/benchmarks/sql.json"),
+) -> None:
+    """Compare DuckDB and SQLite on the three preregistered queries."""
+    result = benchmark_sql(data_root, database, runs, cold_cache_command)
+    write_result(result, output)
+    typer.echo(f"wrote {output}")
+
+
+@benchmark_app.command("report")
+def benchmark_report_command(
+    ingest_result: Annotated[Path, typer.Option("--ingest-result")] = Path(
+        "reports/benchmarks/ingest.json"
+    ),
+    sql_result: Annotated[Path, typer.Option("--sql-result")] = Path("reports/benchmarks/sql.json"),
+    output: Annotated[Path, typer.Option("--output")] = Path("reports/benchmarks/week2-results.md"),
+) -> None:
+    """Render the two raw benchmark results as a publication-ready report."""
+    render_benchmark_report(ingest_result, sql_result, output)
+    typer.echo(f"wrote {output}")
 
 
 @corpus_app.command("build")
