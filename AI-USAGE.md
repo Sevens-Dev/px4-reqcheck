@@ -17,6 +17,7 @@ The original planning document used “hand-written” labels for several compon
 - 2026-09-19: implemented the versioned Python/C++ exchange schemas, real-corpus exporter, and cross-language agreement gate.
 - 2026-09-19: implemented the paired checker timing workflow and drafted the result table from its retained raw artifact.
 - 2026-09-19: generated the deterministic synthetic Parquet fixtures and implemented the tier-1 golden comparison gate.
+- 2026-09-19: implemented the real-corpus golden workflow and assisted with signal analysis and drafting for the root-cause memo.
 
 ## Defects introduced by AI assistance
 

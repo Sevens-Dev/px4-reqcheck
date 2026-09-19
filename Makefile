@@ -1,4 +1,4 @@
-.PHONY: all bench check corpus cpp-agreement cpp-build cpp-check cpp-configure export-checks figures format golden-ci ingest lint report test typecheck
+.PHONY: all bench check corpus cpp-agreement cpp-build cpp-check cpp-configure export-checks figures format golden-ci golden-corpus ingest lint report test typecheck
 
 all: check cpp-check report cpp-agreement
 
@@ -34,6 +34,9 @@ cpp-agreement: export-checks cpp-build
 
 golden-ci:
 	uv run pytest tests/test_golden_ci.py
+
+golden-corpus:
+	uv run pytest golden/corpus/test_corpus_golden.py
 
 bench:
 	uv run px4reqcheck benchmark ingest --runs 10 --cold-cache-command 'sudo scripts/drop-caches.sh'

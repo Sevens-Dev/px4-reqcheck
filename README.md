@@ -71,6 +71,8 @@ The benchmark artifact records CPU, RAM, runner type, exact commands, tool versi
 
 The Python/C++ checker boundary agreed on all 140 requirement/log verdicts. C++ independently reproduced every available pre-landing descent p95 within absolute `1e-6`. The checker-only [timing table](docs/benchmarks/cpp-timing.md) reports 20 runs per implementation and explicitly excludes ULog parsing; it is not a pipeline-speed claim.
 
+Ordinary CI runs the three-fixture tier-1 golden gate. The downloaded 20-log tier-2 gate remains manual: `gh workflow run golden-corpus.yml --ref main`. It requires exact verdicts and tolerance-bounded metrics. The selected [root-cause memo](docs/memos/landing-rate-violation-0d728b7d.md) traces a sustained pre-landing descent-rate violation and names the corpus regression that guards it.
+
 ## Current scope
 
 - Deterministic 20-log PX4 v1.15 corpus manifest with SHA-256 checksums and 404 tolerance.
@@ -82,5 +84,6 @@ The Python/C++ checker boundary agreed on all 140 requirement/log verdicts. C++ 
 - Preregistered DuckDB-versus-SQLite comparison with committed raw results and an explicit null result.
 - Versioned Python/C++ exchange schemas, an independent raw-sample C++ descent implementation, a 140-verdict agreement gate, and committed checker timing evidence.
 - Three committed synthetic Parquet fixtures form the tier-1 golden gate; CI fails if any of their 21 exact verdicts or tolerance-bounded metrics changes.
+- Committed tier-2 expectations cover all 140 real-corpus pairs and run after the pinned download in a manual workflow.
 
-The next milestone adds synthetic and real-corpus golden regression tiers plus a root-cause memo.
+The next milestone widens the corpus and adds denominator-aware statistical slicing.
