@@ -1,0 +1,374 @@
+[
+  {
+    "log_id": "synthetic-fail",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "fail",
+    "metric_value": 0.1,
+    "threshold_value": 0.2,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.2,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "synthetic-fail",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "fail",
+    "metric_value": 13.0,
+    "threshold_value": 14.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 4.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 3.5,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "synthetic-fail",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "fail",
+    "metric_value": 120.0,
+    "threshold_value": 100.0,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 100.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "synthetic-fail",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "fail",
+    "metric_value": 1.5,
+    "threshold_value": 1.0,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 1.0,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 10.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "synthetic-fail",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "fail",
+    "metric_value": 2.0,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "synthetic-fail",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "fail",
+    "metric_value": 2.0,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "synthetic-fail",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "fail",
+    "metric_value": 0.5,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "synthetic-partial",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "pass",
+    "metric_value": 0.5,
+    "threshold_value": 0.2,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.2,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "synthetic-partial",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": null,
+    "comparator": ">=",
+    "cause": "param_disabled",
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 0.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 3.5,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "synthetic-partial",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": null,
+    "comparator": "<=",
+    "cause": "param_disabled",
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 0.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "synthetic-partial",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": 1.0,
+    "comparator": "<=",
+    "cause": "signal_missing",
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 1.0,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 10.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "synthetic-partial",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": "signal_missing",
+    "source_params": []
+  },
+  {
+    "log_id": "synthetic-partial",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": "signal_missing",
+    "source_params": []
+  },
+  {
+    "log_id": "synthetic-partial",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "not_evaluable",
+    "metric_value": null,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": "signal_missing",
+    "source_params": []
+  },
+  {
+    "log_id": "synthetic-pass",
+    "requirement_id": "REQ-BATT-002-REMAIN",
+    "metric": "battery_remaining_at_disarm",
+    "unit": "fraction",
+    "status": "pass",
+    "metric_value": 0.5,
+    "threshold_value": 0.2,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_low_thr",
+        "source_name": "BAT_LOW_THR",
+        "value": 0.2,
+        "unit": "fraction"
+      }
+    ]
+  },
+  {
+    "log_id": "synthetic-pass",
+    "requirement_id": "REQ-BATT-003-VOLT",
+    "metric": "battery_voltage_at_disarm",
+    "unit": "V",
+    "status": "pass",
+    "metric_value": 15.0,
+    "threshold_value": 14.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "bat_n_cells",
+        "source_name": "BAT1_N_CELLS",
+        "value": 4.0,
+        "unit": "cells"
+      },
+      {
+        "logical_name": "bat_v_empty",
+        "source_name": "BAT1_V_EMPTY",
+        "value": 3.5,
+        "unit": "V/cell"
+      }
+    ]
+  },
+  {
+    "log_id": "synthetic-pass",
+    "requirement_id": "REQ-GEOFENCE-001",
+    "metric": "max_distance_from_home",
+    "unit": "m",
+    "status": "pass",
+    "metric_value": 20.0,
+    "threshold_value": 100.0,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "GF_MAX_HOR_DIST",
+        "source_name": "GF_MAX_HOR_DIST",
+        "value": 100.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "synthetic-pass",
+    "requirement_id": "REQ-LAND-001",
+    "metric": "descent_rate_pre_land_p95",
+    "unit": "m/s",
+    "status": "pass",
+    "metric_value": 0.8,
+    "threshold_value": 1.0,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": [
+      {
+        "logical_name": "MPC_LAND_SPEED",
+        "source_name": "MPC_LAND_SPEED",
+        "value": 1.0,
+        "unit": "m/s"
+      },
+      {
+        "logical_name": "MPC_LAND_ALT2",
+        "source_name": "MPC_LAND_ALT2",
+        "value": 10.0,
+        "unit": "m"
+      }
+    ]
+  },
+  {
+    "log_id": "synthetic-pass",
+    "requirement_id": "REQ-GPS-001",
+    "metric": "gps_min_fix_type",
+    "unit": "fix_type",
+    "status": "pass",
+    "metric_value": 3.0,
+    "threshold_value": 3.0,
+    "comparator": ">=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "synthetic-pass",
+    "requirement_id": "REQ-CRUISE-001",
+    "metric": "altitude_error_rms_cruise",
+    "unit": "m",
+    "status": "pass",
+    "metric_value": 0.40000000000000036,
+    "threshold_value": 1.5,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  },
+  {
+    "log_id": "synthetic-pass",
+    "requirement_id": "REQ-VIB-001",
+    "metric": "vibration_rms_z",
+    "unit": "m/s^2",
+    "status": "pass",
+    "metric_value": 0.2,
+    "threshold_value": 0.3,
+    "comparator": "<=",
+    "cause": null,
+    "source_params": []
+  }
+]

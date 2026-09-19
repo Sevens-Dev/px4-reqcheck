@@ -1,0 +1,7 @@
+battery_remaining_at_disarm: {absolute: 1.0e-9, relative: 1.0e-9}
+battery_voltage_at_disarm: {absolute: 1.0e-9, relative: 1.0e-9}
+max_distance_from_home: {absolute: 1.0e-6, relative: 1.0e-9}
+descent_rate_pre_land_p95: {absolute: 1.0e-6, relative: 1.0e-9}
+gps_min_fix_type: {absolute: 0.0, relative: 0.0}
+altitude_error_rms_cruise: {absolute: 1.0e-6, relative: 1.0e-9}
+vibration_rms_z: {absolute: 1.0e-6, relative: 1.0e-9}
