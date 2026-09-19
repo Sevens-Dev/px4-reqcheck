@@ -38,3 +38,19 @@ def test_committed_results_recompute_and_preregistration_is_complete() -> None:
         "## Minimum detectable difference given N",
     ):
         assert heading in preregistration
+
+
+def test_cpp_timing_table_recomputes_from_twenty_successful_runs() -> None:
+    timing = json.loads((BENCHMARKS / "cpp-timing.json").read_text(encoding="utf-8"))
+    report = (BENCHMARKS / "cpp-timing.md").read_text(encoding="utf-8")
+    environment = (BENCHMARKS / "cpp-timing-environment.txt").read_text(encoding="utf-8")
+
+    results = {result["command"]: result for result in timing["results"]}
+    for result in results.values():
+        assert len(result["times"]) == 20
+        assert result["exit_codes"] == [0] * 20
+        assert result["median"] == statistics.median(result["times"])
+    assert "5.010 s" in report
+    assert "0.187 s" in report
+    for field in ("cpu=", "ram_kib=", "hyperfine 1.19.0", "Python 3.12.3"):
+        assert field in environment
